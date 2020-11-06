@@ -1,6 +1,26 @@
 [
-  {"lastname":"Lapointe", "firstname":"Bobby", "email":"bobbylapointe@gmail.com", "password":"A9C4CEF5735770E657B7C25B9DCB807B"},
-  {"lastname":"Doe", "firstname":"John", "email":"johndoe@orange.fr", "password":"6E0B7076126A29D5DFCBD54835387B7B"},
-  {"lastname":"Potter", "firstname":"Harry", "email":"dumbledore@poudla.rd", "password":"2B926CB30F3436D0F1CF94FB807F5C9F"},
-  {"lastname":"Tesla", "firstname":"Nicolas", "email":"madscientist07@yahoo.fr", "password":"6E7906B7FB3F8E1C6366C0910050E595"}
+  {
+    "lastname": "Lapointe",
+    "firstname": "Bobby",
+    "email": "bobbylapointe@gmail.com",
+    "password": "A9C4CEF5735770E657B7C25B9DCB807B"
+  },
+  {
+    "lastname": "Doe",
+    "firstname": "John",
+    "email": "johndoe@orange.fr",
+    "password": "6E0B7076126A29D5DFCBD54835387B7B"
+  },
+  {
+    "lastname": "Potter",
+    "firstname": "Harry",
+    "email": "dumbledore@poudla.rd",
+    "password": "2B926CB30F3436D0F1CF94FB807F5C9F"
+  },
+  {
+    "lastname": "Tesla",
+    "firstname": "Nicolas",
+    "email": "madscientist07@yahoo.fr",
+    "password": "6E7906B7FB3F8E1C6366C0910050E595"
+  }
 ]
