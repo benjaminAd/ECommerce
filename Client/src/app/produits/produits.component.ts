@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {ProduitsService} from '../produits.service';
 import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-produits',
@@ -11,17 +12,17 @@ import {Observable} from 'rxjs';
 export class ProduitsComponent implements OnInit {
 
   // tslint:disable-next-line:ban-types
-  public produits: Object[] = [{nom: 'quercétine', type: 'anti-oxydant'}, {nom: 'caféine', type: 'anti-fatigue'}];
+  public produits: Object[];
 
-  /* constructor(private produitsService: ProduitsService) {
-    console.log('Dans le constructeur du composant produits');
+  constructor(private produitsService: ProduitsService) {
+    // console.log('Dans le constructeur produits');
   }
 
-  /*ngOnInit() {
-    console.log('Dans ngOnInit() du composant produits');
+  ngOnInit() {
+    // console.log('Dans ngOnInit() du composant produits');
     this.produitsService.getProduits().subscribe(produits => {
       this.produits = produits;
     });
-  }*/
+  }
 
 }
