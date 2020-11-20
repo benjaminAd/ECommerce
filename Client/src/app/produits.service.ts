@@ -16,4 +16,9 @@ export class ProduitsService {
     //  console.log('Dans le service ProduitsService avec ' + url);
     return this.http.get(url);
   }
+
+  getCategories(): Observable<any> {
+    const url = this.urlBase + 'categories';
+    return this.http.get(url);
+  }
 }

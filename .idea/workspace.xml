@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f13c97ea-b226-4f1b-ac46-22b19e0b7b4b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Client/src/app/categories.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/app/categories.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/app/categories/categories.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/app/categories/categories.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/app/categories/categories.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/app/categories/categories.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/app/menu/menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/app/menu/menu.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/app/categories.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/app/categories.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/app/categories/categories.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/app/categories/categories.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/app/produits.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/app/produits.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +65,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605861433681</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Menu Listes Produits et Liste Catégories done">
+      <created>1605864748717</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605864748717</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -81,17 +82,22 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Url en variables" />
     <MESSAGE value="Création component menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Création component menu" />
+    <MESSAGE value="Menu Listes Produits et Liste Catégories done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Menu Listes Produits et Liste Catégories done" />
   </component>
   <component name="WindowStateProjectService">
     <state x="95" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605859143814">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="95" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689@0.0.1280.689" timestamp="1605859143814" />
-    <state x="155" y="0" key="CommitChangelistDialog2" timestamp="1605861432274">
+    <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605865034302">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="155" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1605861432274" />
+    <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.689@0.0.1280.689" timestamp="1605865034302" />
+    <state x="155" y="0" key="CommitChangelistDialog2" timestamp="1605864747001">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="155" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1605864747001" />
     <state x="421" y="86" key="FileChooserDialogImpl" timestamp="1605254671525">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -112,10 +118,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1222" height="163" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1605859014339" />
-    <state x="233" y="65" key="Vcs.Push.Dialog.v2" timestamp="1605861438470">
+    <state x="233" y="65" key="Vcs.Push.Dialog.v2" timestamp="1605864751045">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="233" y="65" key="Vcs.Push.Dialog.v2/0.0.1280.689@0.0.1280.689" timestamp="1605861438470" />
+    <state x="233" y="65" key="Vcs.Push.Dialog.v2/0.0.1280.689@0.0.1280.689" timestamp="1605864751045" />
     <state x="297" y="153" key="run.anything.popup" timestamp="1605863714888">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
