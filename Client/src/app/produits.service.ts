@@ -6,14 +6,14 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ProduitsService {
-  // private urlBase = 'http://localhost:8888/';
+  private urlBase = 'http://localhost:8888/';
 
   constructor(private http: HttpClient) {
   }
 
   getProduits(): Observable<any> {
-    // const url = 'http://localhost:8888/produits';
+    const url = this.urlBase + 'produits';
     //  console.log('Dans le service ProduitsService avec ' + url);
-    return this.http.get('http://localhost:8888/produits');
+    return this.http.get(url);
   }
 }
