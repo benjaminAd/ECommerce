@@ -6,12 +6,14 @@ import { ProduitsComponent } from './produits/produits.component';
 import {Route, RouterModule} from "@angular/router";
 import { MenuComponent } from './menu/menu.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProduitsComponent,
-    MenuComponent
+    MenuComponent,
+    CategoriesComponent
   ],
     imports: [
         BrowserModule,
