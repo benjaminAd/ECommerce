@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f13c97ea-b226-4f1b-ac46-22b19e0b7b4b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Client/src/app/menu/menu.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/app/menu/menu.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/app/menu/menu.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/app/menu/menu.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/app/app.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +46,8 @@
       <workItem from="1605256178150" duration="4000" />
       <workItem from="1605857636895" duration="246000" />
       <workItem from="1605858531879" duration="461000" />
-      <workItem from="1605859067484" duration="1981000" />
+      <workItem from="1605859067484" duration="2089000" />
+      <workItem from="1605862594609" duration="249000" />
     </task>
     <task id="LOCAL-00001" summary="Url en variables">
       <created>1605859334605</created>
@@ -59,7 +56,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605859334605</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Création component menu">
+      <created>1605861433681</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605861433681</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -68,17 +72,18 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Url en variables" />
-    <option name="LAST_COMMIT_MESSAGE" value="Url en variables" />
+    <MESSAGE value="Création component menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Création component menu" />
   </component>
   <component name="WindowStateProjectService">
     <state x="95" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605859143814">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="95" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689@0.0.1280.689" timestamp="1605859143814" />
-    <state x="155" y="0" key="CommitChangelistDialog2" timestamp="1605859332223">
+    <state x="155" y="0" key="CommitChangelistDialog2" timestamp="1605861432274">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="155" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1605859332223" />
+    <state x="155" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1605861432274" />
     <state x="421" y="86" key="FileChooserDialogImpl" timestamp="1605254671525">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -99,9 +104,9 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1222" height="163" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1605859014339" />
-    <state x="233" y="65" key="Vcs.Push.Dialog.v2" timestamp="1605859338243">
+    <state x="233" y="65" key="Vcs.Push.Dialog.v2" timestamp="1605861438470">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="233" y="65" key="Vcs.Push.Dialog.v2/0.0.1280.689@0.0.1280.689" timestamp="1605859338243" />
+    <state x="233" y="65" key="Vcs.Push.Dialog.v2/0.0.1280.689@0.0.1280.689" timestamp="1605861438470" />
   </component>
 </project>
