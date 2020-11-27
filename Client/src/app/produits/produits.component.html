@@ -1,5 +1,12 @@
 <br/>
 Liste des produits:
 <ul>
-  <li *ngFor="let produit of produits">{{produit['nom']}}({{produit['type']}})</li>
+  <div *ngFor="let produit of produits">
+    <li>{{produit['nom']}}({{produit['type']}})</li>
+    <a
+      [routerLink]="['/panier/achat', produit['nom'], produit['marque']]" *ngIf="user|async">
+      <button>Achat</button>
+    </a>
+
+  </div>
 </ul>

@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CategoriesComponent } from './categories/categories.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import {FormsModule} from "@angular/forms";
+import { PanierComponent } from './panier/panier.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {FormsModule} from "@angular/forms";
     ProduitsComponent,
     MenuComponent,
     CategoriesComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    PanierComponent
   ],
   imports: [
     BrowserModule,

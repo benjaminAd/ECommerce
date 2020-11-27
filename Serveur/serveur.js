@@ -75,6 +75,12 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
             res.end(JSON.stringify({"resultat": 0, "message": e}));
         }
     });
+
+    /*Ajout au panier*/
+    app.post("/panier/ajout", (req, res) => {
+        console.log("route : /produit/ajout avec " + JSON.stringify(req.body));
+        res.end(JSON.stringify({"response": "ajout d'un produit dans le panier"}));
+    })
 });
 
 app.listen(8888);
