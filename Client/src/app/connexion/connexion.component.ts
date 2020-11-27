@@ -8,8 +8,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./connexion.component.css']
 })
 export class ConnexionComponent {
-  utilisateur = {"email": "", "password": ""};
-  private message: string = "";
+  public utilisateur = {"email": "", "password": ""};
+  public message: string = "";
 
   constructor(private authService: AuthentificationService, private route: Router) {
   }
@@ -22,7 +22,8 @@ export class ConnexionComponent {
         this.route.navigate(['/categories']);
       }
       setTimeout(() => {
-        this.route.navigate(['/categories'])
+        this.route.navigate(['/categories']);
+        console.log('timeout');
       }, 1000);
     });
   }

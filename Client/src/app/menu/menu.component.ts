@@ -10,7 +10,7 @@ import {Observable} from "rxjs";
 export class MenuComponent implements OnInit {
   public user: Observable<any>;
 
-  constructor(private AuthService: AuthentificationService) {
+  constructor(public AuthService: AuthentificationService) {
     this.user = AuthService.getUser();
   }
 
