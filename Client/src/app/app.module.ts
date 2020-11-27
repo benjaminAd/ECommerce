@@ -7,20 +7,24 @@ import {Route, RouterModule} from "@angular/router";
 import { MenuComponent } from './menu/menu.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CategoriesComponent } from './categories/categories.component';
+import { ConnexionComponent } from './connexion/connexion.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     ProduitsComponent,
     MenuComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    ConnexionComponent
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        RouterModule,
-        AppRoutingModule
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule,
+    AppRoutingModule,
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

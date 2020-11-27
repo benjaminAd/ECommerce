@@ -1,8 +1,13 @@
-<div>
+<div *ngIf="!(user|async)">
   <a routerLink="/produits">Liste produits</a>
   &nbsp;
   &nbsp;
   &nbsp;
   &nbsp;
   <a routerLink="/categories">Liste catégories</a>
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  <a routerLink="/connexion">Se connecter</a>
 </div>

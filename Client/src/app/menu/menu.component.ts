@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthentificationService} from "../authentification.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-menu',
@@ -6,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  public user: Observable<any>;
 
-  constructor() { }
+  constructor(private AuthService: AuthentificationService) {
+    this.user = AuthService.getUser();
+  }
 
   ngOnInit(): void {
   }
