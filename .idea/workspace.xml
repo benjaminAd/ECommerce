@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f13c97ea-b226-4f1b-ac46-22b19e0b7b4b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Client/src/app/panier/panier.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/app/panier/panier.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/app/panier/panier.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/app/panier/panier.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/app/produits/produits.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/app/produits/produits.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/app/produits/produits.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/app/produits/produits.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serveur/serveur.js" beforeDir="false" afterPath="$PROJECT_DIR$/Serveur/serveur.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/app/panier/panier.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/app/panier/panier.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +24,6 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.18.3" />
@@ -61,7 +51,7 @@
       <workItem from="1605859067484" duration="2089000" />
       <workItem from="1605862594609" duration="249000" />
       <workItem from="1605869159874" duration="2135000" />
-      <workItem from="1606466817617" duration="6024000" />
+      <workItem from="1606466817617" duration="6405000" />
     </task>
     <task id="LOCAL-00001" summary="Url en variables">
       <created>1605859334605</created>
@@ -105,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606471230057</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Ajout panier OK --&gt; Il faut mettre dans la bdd now">
+      <created>1606473347773</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1606473347773</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,7 +116,8 @@
     <MESSAGE value="Suppression services catégories" />
     <MESSAGE value="connexion.component.ts" />
     <MESSAGE value="Connexion OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="Connexion OK" />
+    <MESSAGE value="Ajout panier OK --&gt; Il faut mettre dans la bdd now" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout panier OK --&gt; Il faut mettre dans la bdd now" />
   </component>
   <component name="WindowStateProjectService">
     <state x="95" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605859143814">
@@ -130,10 +128,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.689@0.0.1280.689" timestamp="1605865034302" />
-    <state x="155" y="0" key="CommitChangelistDialog2" timestamp="1606471228449">
+    <state x="155" y="0" key="CommitChangelistDialog2" timestamp="1606473346326">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="155" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1606471228449" />
+    <state x="155" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1606473346326" />
     <state x="421" y="86" key="FileChooserDialogImpl" timestamp="1605254671525">
       <screen x="0" y="0" width="1280" height="689" />
     </state>

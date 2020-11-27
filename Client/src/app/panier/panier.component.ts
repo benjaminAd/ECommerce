@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,7 +18,7 @@ const httpOptions = {
 })
 export class PanierComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -26,6 +26,7 @@ export class PanierComponent implements OnInit {
       console.log(params);
       this.http.post("http://localhost:8888/panier/ajout", JSON.stringify(params), httpOptions).subscribe((resultat: any) => {
         console.log(resultat);
+        this.router.navigate(["/categories"]);
       });
     })
   }
