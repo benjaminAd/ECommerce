@@ -26,9 +26,9 @@ export class PanierComponent implements OnInit {
       console.log(params);
       this.http.post("http://localhost:8888/panier/ajout", JSON.stringify(params), httpOptions).subscribe((resultat: any) => {
         console.log(resultat);
-        this.router.navigate(["/categories"]);
+        this.router.navigate(["/produits"]);
       });
-    })
+    });
   }
 
 }

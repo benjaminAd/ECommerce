@@ -78,9 +78,31 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
 
     /*Ajout au panier*/
     app.post("/panier/ajout", (req, res) => {
-        console.log("route : /produit/ajout avec " + JSON.stringify(req.body));
-        res.end(JSON.stringify({"response": "ajout d'un produit dans le panier"}));
-    })
+        //console.log("route : /produit/ajout avec " + JSON.stringify(req.body));
+        try {
+            db.collection("panier").insertOne(req.body);
+            res.end(JSON.stringify({"response": "ajout d'un produit dans le panier"}));
+        } catch (e) {
+            res.end(JSON.stringify(e));
+        }
+
+    });
+
+    /*Recup panier*/
+    app.post('/panier', (req, res) => {
+        panier = [];
+        try {
+            db.collection("panier").find({email: req.body.email}).toArray((err, document) => {
+                for (let doc of document) {
+                    panier.push(doc);
+                }
+                console.log(panier);
+                res.end(JSON.stringify(panier));
+            })
+        } catch (e) {
+            res.end(JSON.stringify([]));
+        }
+    });
 });
 
 app.listen(8888);

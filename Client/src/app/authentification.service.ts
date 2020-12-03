@@ -17,6 +17,7 @@ const httpOptions = {
 export class AuthentificationService {
   private user: Subject<string> = new BehaviorSubject(undefined);
   private baseUrl: string = "http://localhost:8888/";
+  public email: string;
 
   constructor(private http: HttpClient) {
   }
@@ -34,6 +35,11 @@ export class AuthentificationService {
   }
 
   verificationConnexion(identifiants): Observable<any> {
+    this.email = identifiants.email;
     return this.http.post(this.baseUrl + 'membre/connexion', JSON.stringify(identifiants), httpOptions);
+  }
+
+  getEmail(): String {
+    return this.email;
   }
 }

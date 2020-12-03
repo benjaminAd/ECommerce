@@ -10,6 +10,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import {FormsModule} from "@angular/forms";
 import { PanierComponent } from './panier/panier.component';
+import { PanierViewComponent } from './panier-view/panier-view.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PanierComponent } from './panier/panier.component';
     MenuComponent,
     CategoriesComponent,
     ConnexionComponent,
-    PanierComponent
+    PanierComponent,
+    PanierViewComponent
   ],
   imports: [
     BrowserModule,
