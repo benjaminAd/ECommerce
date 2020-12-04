@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'produits', component: ProduitsComponent},
   {path: 'categories', component: CategoriesComponent},
   {path: 'connexion', component: ConnexionComponent},
-  {path: 'panier/achat/:nom/:marque/:email', component: PanierComponent},
+  {path: 'panier/achat/:nom/:marque/:quantite/:email', component: PanierComponent},
   {path: 'panier', component: PanierViewComponent}
 ]
 

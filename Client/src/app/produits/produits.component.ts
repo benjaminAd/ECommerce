@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {ProduitsService} from '../produits.service';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
@@ -12,10 +12,9 @@ import {AuthentificationService} from "../authentification.service";
 })
 export class ProduitsComponent implements OnInit {
   public user: Observable<any>
-  // tslint:disable-next-line:ban-types
   public produits: Object[];
 
-  constructor(private produitsService: ProduitsService, private authService: AuthentificationService) {
+  constructor(private produitsService: ProduitsService, private authService: AuthentificationService, private router: Router) {
     this.user = authService.getUser();
     // console.log('Dans le constructeur produits');
   }
@@ -25,6 +24,10 @@ export class ProduitsComponent implements OnInit {
     this.produitsService.getProduits().subscribe(produits => {
       this.produits = produits;
     });
+  }
+
+  addToBasket(produit, quantite) {
+    this.router.navigate(["/panier/achat/" + produit.nom + "/" + produit.marque + "/" + quantite + "/" + this.authService.getEmail()])
   }
 
 }

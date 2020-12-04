@@ -3,10 +3,7 @@ Liste des produits:
 <ul>
   <div *ngFor="let produit of produits">
     <li>{{produit['nom']}}({{produit['type']}})</li>
-    <a
-      [routerLink]="['/panier/achat', produit['nom'], produit['marque'],user|async]" *ngIf="user|async">
-      <button>Achat</button>
-    </a>
-
+    <input type="text" name="quantite" #quantite id="quantite{{produit['nom']}}"/>
+    <button (click)="addToBasket(produit,quantite.value)">Achat</button>
   </div>
 </ul>
