@@ -103,6 +103,25 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
             res.end(JSON.stringify([]));
         }
     });
+
+    // Supprimer un article du panier
+    app.post('/panier/delete', (req, res) => {
+        try {
+            //console.log(req.body.nom);
+            db.collection("panier").deleteOne({
+                nom: req.body.nom,
+                marque: req.body.marque,
+                quantite: req.body.quantite,
+                email: req.body.email
+            }, (err, obj) => {
+                if (err) throw err;
+                //console.log("élément effacé");
+            });
+            res.end(JSON.stringify(req.body.nom));
+        } catch (e) {
+            res.end(JSON.stringify(e));
+        }
+    });
 });
 
 app.listen(8888);
