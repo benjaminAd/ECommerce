@@ -21,10 +21,10 @@ export class ConnexionComponent {
         this.authService.connect(this.utilisateur.email);
         this.route.navigate(['/categories']);
       }
-      setTimeout(() => {
+      /*setTimeout(() => {
         this.route.navigate(['/categories']);
         console.log('timeout');
-      }, 1000);
+      }, 1000);*/
     });
   }
 

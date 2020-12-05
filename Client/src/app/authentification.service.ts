@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,7 +20,7 @@ export class AuthentificationService {
   private baseUrl: string = "http://localhost:8888/";
   public email: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   getUser() {
@@ -32,6 +33,7 @@ export class AuthentificationService {
 
   disconnect() {
     this.user.next(null);
+    this.router.navigate(['/']);
   }
 
   verificationConnexion(identifiants): Observable<any> {
