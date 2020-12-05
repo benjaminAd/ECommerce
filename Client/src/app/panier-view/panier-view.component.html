@@ -1,6 +1,9 @@
-<ul>
-  <div *ngFor="let item of panier">
-    <li>{{item["nom"]}} de la marque : {{item["marque"]}} en {{item['quantite']}} exemplaires</li>
-    <button (click)="deleteItem(item)">Supprimer</button>
-  </div>
-</ul>
+<div *ngIf="utilisateur|async">
+  <ul>
+    <div *ngFor="let item of panier">
+      <li>{{item["nom"]}} de la marque : {{item["marque"]}} en {{item['quantite']}} exemplaires</li>
+      <button (click)="deleteItem(item)">Supprimer</button>
+    </div>
+  </ul>
+  <button (click)="deleteBasket()">Supprimer Panier</button>
+</div>

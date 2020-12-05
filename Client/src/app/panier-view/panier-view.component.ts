@@ -21,7 +21,7 @@ const httpOptions = {
 export class PanierViewComponent implements OnInit {
   user: String;
   public utilisateur: any;
-  public panier: [];
+  public panier: any;
 
   constructor(private http: HttpClient, private authService: AuthentificationService, private router: Router) {
     this.user = this.authService.getEmail();
@@ -31,8 +31,9 @@ export class PanierViewComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.user);
     this.http.post("http://localhost:8888/panier", JSON.stringify({email: this.user}), httpOptions).subscribe((resultat: any) => {
-      console.log(resultat);
+      console.log("resultat = " + resultat);
       this.panier = resultat;
+
     });
   }
 
@@ -42,6 +43,15 @@ export class PanierViewComponent implements OnInit {
       marque: item.marque,
       quantite: item.quantite,
       email: item.email
+    }), httpOptions).subscribe((resultat) => {
+      console.log(resultat);
+      window.location.reload();
+    });
+  }
+
+  deleteBasket() {
+    this.http.post("http://localhost:8888/panier/deleteBasket", JSON.stringify({
+      email: this.user
     }), httpOptions).subscribe((resultat) => {
       console.log(resultat);
       window.location.reload();

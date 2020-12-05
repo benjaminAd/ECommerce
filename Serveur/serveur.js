@@ -122,6 +122,20 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
             res.end(JSON.stringify(e));
         }
     });
+
+    //Delete Basket
+    app.post("/panier/deleteBasket", (req, res) => {
+        // console.log(req.body.email);
+        try {
+            db.collection("panier").deleteMany({email: req.body.email}, (err, obj) => {
+                if (err) throw err;
+            });
+            res.end(JSON.stringify(req.body.email));
+        } catch (e) {
+            res.end(JSON.stringify(e));
+        }
+
+    });
 });
 
 app.listen(8888);
