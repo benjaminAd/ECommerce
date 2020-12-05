@@ -49,6 +49,19 @@ export class PanierViewComponent implements OnInit {
     });
   }
 
+  updateItem(item, newQuantite) {
+    this.http.post("http://localhost:8888/panier/update", JSON.stringify({
+      nom: item.nom,
+      marque: item.marque,
+      quantite: item.quantite,
+      email: item.email,
+      newQuantite: newQuantite
+    }), httpOptions).subscribe((resultat) => {
+      console.log(resultat);
+      //window.location.reload();
+    });
+  }
+
   deleteBasket() {
     this.http.post("http://localhost:8888/panier/deleteBasket", JSON.stringify({
       email: this.user
@@ -57,5 +70,6 @@ export class PanierViewComponent implements OnInit {
       window.location.reload();
     });
   }
+
 
 }

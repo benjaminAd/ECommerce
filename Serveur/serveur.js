@@ -123,6 +123,32 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
         }
     });
 
+    //update quantite panier
+    app.post("/panier/update", (req, res) => {
+        console.log(req.body.quantite + "  " + req.body.newQuantite);
+        try {
+            db.collection("panier").updateOne({
+                    nom: req.body.nom,
+                    marque: req.body.marque,
+                    quantite: req.body.quantite,
+                    email: req.body.email
+                }, {
+                $set: {
+                    nom: req.body.nom,
+                    marque: req.body.marque,
+                    quantite: req.body.newQuantite,
+                    email: req.body.email
+                }
+                }, (err, obj) => {
+                    if (err) throw err;
+                }
+            );
+            res.end(JSON.stringify(req.body.newQuantite));
+        } catch (e) {
+            res.end(JSON.stringify(e));
+        }
+    });
+
     //Delete Basket
     app.post("/panier/deleteBasket", (req, res) => {
         // console.log(req.body.email);

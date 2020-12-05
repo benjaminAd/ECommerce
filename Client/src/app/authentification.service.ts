@@ -33,7 +33,7 @@ export class AuthentificationService {
 
   disconnect() {
     this.user.next(null);
-    this.router.navigate(['/']);
+    this.router.navigate(['/connexion']);
   }
 
   verificationConnexion(identifiants): Observable<any> {
