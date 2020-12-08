@@ -16,7 +16,6 @@ const httpOptions = {
 })
 
 
-
 export class ProduitsService {
   private urlBase = 'http://localhost:8888/';
 
@@ -34,8 +33,18 @@ export class ProduitsService {
     return this.http.get(url);
   }
 
+  getMarques(): Observable<any> {
+    const url = this.urlBase + 'marques';
+    return this.http.get(url);
+  }
+
   addProduit(infos): Observable<any> {
     const url = this.urlBase + 'produits/ajouter';
     return this.http.post(url, infos, httpOptions);
+  }
+
+  getProduitFromResearch(research): Observable<any> {
+    const url = this.urlBase + 'produit/research';
+    return this.http.post(url, research, httpOptions);
   }
 }

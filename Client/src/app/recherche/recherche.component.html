@@ -1,0 +1,25 @@
+<div *ngIf="(user|async)">
+  <form (ngSubmit)="onSubmit()">
+    <input type="text" name="recherche" placeholder="Recherche" [(ngModel)]="research['nom']"/><br>
+    <label>Catégories</label><br>
+    <label for="defautCat">Défaut</label><input type="radio" id="defautCat" name="categorie" value=""
+                                                [(ngModel)]="research['categorie']" checked/>
+    <span *ngFor="let cat of categories"><label for="{{cat}}">{{cat}}</label><input type="radio" id="{{cat}}"
+                                                                                    name="categorie" value="{{cat}}"
+                                                                                    [(ngModel)]="research['categorie']"/>&nbsp;&nbsp;</span><br>
+    <label>Marques</label><br>
+    <label for="defautMarque">Défaut</label><input type="radio" id="defautMarque" name="marque" value=""
+                                                   [(ngModel)]="research['marque']" checked/>
+    <span *ngFor="let marque of marques"><label for="{{marque}}">{{marque}}</label><input type="radio"
+                                                                                          id="{{marque}}"
+                                                                                          name="marque"
+                                                                                          value="{{marque}}"
+                                                                                          [(ngModel)]="research['marque']"/>&nbsp;&nbsp;</span><br>
+    <label for="prixmin">Prix minimum:</label><input type="number" id="prixmin" name="prixmin"
+                                                     [(ngModel)]="research['MinPrix']"/> <label for="prixmax">Prix
+    maximum:</label><input type="number" id="prixmax" name="prixmax" [(ngModel)]="research['MaxPrix']"/> <br>
+
+    <input type="submit" value="Rechercher"/>
+  </form>
+  <p>On fait fonctionner</p>
+</div>

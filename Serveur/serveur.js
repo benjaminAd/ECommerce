@@ -72,6 +72,94 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
         }
     });
 
+    /*Liste des marques*/
+    app.get("/marques", (req, res) => {
+        console.log("/categories");
+        marques = [];
+        try {
+            db.collection("produits").find().toArray((err, documents) => {
+                for (let doc of documents) {
+                    if (!marques.includes(doc.marque)) marques.push(doc.marque);
+                }
+                res.end(JSON.stringify(marques));
+            });
+        } catch (e) {
+            console.log("Erreur sur /marques : " + e);
+            res.end(JSON.stringify([]));
+        }
+    });
+
+    /*Recherche produit*/
+    app.post("/produit/research", (req, res) => {
+        produits = [];
+        try {
+            let query = {
+                "nom": req.body.nom,
+                "type": req.body.categorie,
+                "marque": req.body.marque,
+                "prix": {$gt: req.body.MinPrix, $lt: req.body.MaxPrix}
+            };
+            if (req.body.nom === "") query = {
+                "type": req.body.categorie,
+                "marque": req.body.marque,
+                "prix": {$gt: req.body.MinPrix, $lt: req.body.MaxPrix}
+            };
+            if (req.body.categorie === "") query = {
+                "nom": req.body.nom,
+                "marque": req.body.marque,
+                "prix": {$gt: req.body.MinPrix, $lt: req.body.MaxPrix}
+            };
+            if (req.body.marque === "") query = {
+                "nom": req.body.nom,
+                "type": req.body.categorie,
+                "prix": {$gt: req.body.MinPrix, $lt: req.body.MaxPrix}
+            };
+            if (req.body.MinPrix === null) query = {
+                "nom": req.body.nom,
+                "type": req.body.categorie,
+                "marque": req.body.marque,
+                "prix": {$lt: req.body.MaxPrix}
+            };
+            if (req.body.MaxPrix === null) query = {
+                "nom": req.body.nom,
+                "type": req.body.categorie,
+                "marque": req.body.marque,
+                "prix": {$gt: req.body.MinPrix}
+            };
+            if ((req.body.MaxPrix === null) && (req.body.MinPrix === null)) query = {
+                "nom": req.body.nom,
+                "type": req.body.categorie,
+                "marque": req.body.marque
+            };
+            if ((req.body.nom === "") && (req.body.categorie === "")) query = {
+                "marque": req.body.marque,
+                "prix": {$gt: req.body.MinPrix, $lt: req.body.MaxPrix}
+            };
+            if ((req.body.nom === "") && (req.body.marque === "")) query = {
+                "type": req.body.categorie,
+                "prix": {$gt: req.body.MinPrix, $lt: req.body.MaxPrix}
+            };
+            if ((req.body.nom === "") && (req.body.MinPrix === null)) query = {
+                "type": req.body.categorie,
+                "marque": req.body.marque,
+                "prix": {$lt: req.body.MaxPrix}
+            };
+            if ((req.body.nom === "") && (req.body.MaxPrix === null)) query = {
+                "type": req.body.categorie,
+                "marque": req.body.marque,
+                "prix": {$gt: req.body.MinPrix}
+            };
+            db.collection("produits").find(query).toArray((err, documents) => {
+                for (let doc of documents) {
+                    produits.push(doc);
+                }
+                res.end(JSON.stringify(produits));
+            });
+        } catch (e) {
+            res.end(JSON.stringify([]));
+        }
+    });
+
     /*CheckExistEmail*/
     app.post("/membre/exist", (req, res) => {
         try {

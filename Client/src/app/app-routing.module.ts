@@ -8,6 +8,7 @@ import {PanierComponent} from "./panier/panier.component";
 import {PanierViewComponent} from "./panier-view/panier-view.component";
 import {InscriptionComponent} from "./inscription/inscription.component";
 import {AddProduitComponent} from "./add-produit/add-produit.component";
+import {RechercheComponent} from "./recherche/recherche.component";
 
 const routes: Routes = [
   {path: 'produits', component: ProduitsComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'panier/achat/:nom/:prix/:marque/:quantite/:email', component: PanierComponent},
   {path: 'panier', component: PanierViewComponent},
   {path: 'Inscription', component: InscriptionComponent},
-  {path: 'addProduct', component: AddProduitComponent}
+  {path: 'addProduct', component: AddProduitComponent},
+  {path: 'rechercher', component: RechercheComponent}
 ]
 
 @NgModule({
