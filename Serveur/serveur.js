@@ -61,6 +61,21 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
         }
     });
 
+    /*CheckExistEmail*/
+    app.post("/membre/exist", (req, res) => {
+        try {
+            db.collection("membres").find({"email": req.body.email}).toArray((err, document) => {
+                if ((document !== undefined) && (document.length >= 1)) {
+                    res.end(JSON.stringify({"resultat": 0, "message": "Cet utilisateur existe déjà"}));
+                } else {
+                    res.end(JSON.stringify({"resultat": 1, "message": "OK"}));
+                }
+            });
+        } catch (e) {
+            res.end(JSON.stringify({"resultat": 0, "message": e}));
+        }
+    });
+
     /* Inscription */
     app.post("/membre/inscription", (req, res) => {
         try {

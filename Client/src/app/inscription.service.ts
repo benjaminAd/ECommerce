@@ -24,4 +24,8 @@ export class InscriptionService {
   inscription(utilisateur): Observable<any> {
     return this.http.post(this.baseUrl + 'membre/inscription', JSON.stringify(utilisateur), httpOptions);
   }
+
+  verifExist(email): Observable<any> {
+    return this.http.post(this.baseUrl + 'membre/exist', JSON.stringify({"email": email}), httpOptions);
+  }
 }
