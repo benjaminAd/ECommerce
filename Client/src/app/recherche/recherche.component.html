@@ -21,5 +21,11 @@
 
     <input type="submit" value="Rechercher"/>
   </form>
-  <p>On fait fonctionner</p>
+  <ul *ngFor="let r of res">
+    <li>{{r['nom']}}({{r['type']}})</li>
+    <div *ngIf="!(admin|async) && (user|async)">
+      <input type="text" name="quantite" #quantite id="quantite{{r['nom']}}"/>
+      <button (click)="addToBasket(r,quantite.value)">Achat</button>
+    </div>
+  </ul>
 </div>
