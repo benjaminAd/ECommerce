@@ -19,6 +19,7 @@ export class AuthentificationService {
   private user: Subject<string> = new BehaviorSubject(undefined);
   private baseUrl: string = "http://localhost:8888/";
   public email: string;
+  public admin: Subject<boolean> = new BehaviorSubject(undefined);
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -43,5 +44,13 @@ export class AuthentificationService {
 
   getEmail(): String {
     return this.email;
+  }
+
+  setAdmin(admin) {
+    this.admin.next(admin);
+  }
+
+  getAdmin() {
+    return this.admin;
   }
 }

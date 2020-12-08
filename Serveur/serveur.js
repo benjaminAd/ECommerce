@@ -29,6 +29,17 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
         }
     });
 
+    /*Ajout Produit*/
+    app.post("/produits/ajouter", (req, res) => {
+        try {
+            console.log(req.body);
+            db.collection("produits").insertOne(req.body);
+            res.end(JSON.stringify(req.body));
+        } catch (e) {
+            res.end(JSON.stringify({"resultat": 0, "message": e}));
+        }
+    });
+
     /* Liste des produits suivant une catégorie */
     app.get("/produits/:categorie", (req, res) => {
         let categorie = req.params.categorie;
@@ -92,9 +103,14 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
             db.collection("membres")
                 .find(req.body)
                 .toArray((err, documents) => {
-                    if (documents !== undefined && documents.length === 1)
-                        res.end(JSON.stringify({"resultat": 1, "message": "Authentification réussie"}));
-                    else res.end(JSON.stringify({"resultat": 0, "message": "Email et/ou mot de passe incorrect"}));
+                    if (documents !== undefined && documents.length === 1) {
+                        res.end(JSON.stringify({
+                            "resultat": 1,
+                            "message": "Authentification réussie",
+                            "admin": documents[0].admin
+                        }));
+                    } else
+                        res.end(JSON.stringify({"resultat": 0, "message": "Email et/ou mot de passe incorrect"}));
                 });
         } catch (e) {
             res.end(JSON.stringify({"resultat": 0, "message": e}));
@@ -186,6 +202,11 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
             res.end(JSON.stringify(e));
         }
 
+    });
+
+    /*UploadImage*/
+    app.post("/uploadImage", (req, res) => {
+        console.log(req.body);
     });
 });
 

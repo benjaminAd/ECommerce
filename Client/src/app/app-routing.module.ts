@@ -7,6 +7,7 @@ import {ConnexionComponent} from "./connexion/connexion.component";
 import {PanierComponent} from "./panier/panier.component";
 import {PanierViewComponent} from "./panier-view/panier-view.component";
 import {InscriptionComponent} from "./inscription/inscription.component";
+import {AddProduitComponent} from "./add-produit/add-produit.component";
 
 const routes: Routes = [
   {path: 'produits', component: ProduitsComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'connexion', component: ConnexionComponent},
   {path: 'panier/achat/:nom/:marque/:quantite/:email', component: PanierComponent},
   {path: 'panier', component: PanierViewComponent},
-  {path: 'Inscription', component: InscriptionComponent}
+  {path: 'Inscription', component: InscriptionComponent},
+  {path: 'addProduct', component: AddProduitComponent}
 ]
 
 @NgModule({
@@ -25,5 +27,6 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule {
 }

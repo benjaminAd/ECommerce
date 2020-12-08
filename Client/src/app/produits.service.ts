@@ -1,10 +1,22 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    "Access-Control-Allow-Methods": "GET,POST",
+    "Access-Control-Allow-Headers": "Content-type",
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  })
+};
 
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class ProduitsService {
   private urlBase = 'http://localhost:8888/';
 
@@ -20,5 +32,10 @@ export class ProduitsService {
   getCategories(): Observable<any> {
     const url = this.urlBase + 'categories';
     return this.http.get(url);
+  }
+
+  addProduit(infos): Observable<any> {
+    const url = this.urlBase + 'produits/ajouter';
+    return this.http.post(url, infos, httpOptions);
   }
 }

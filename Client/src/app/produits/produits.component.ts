@@ -12,10 +12,12 @@ import {AuthentificationService} from "../authentification.service";
 })
 export class ProduitsComponent implements OnInit {
   public user: Observable<any>
+  public admin: Observable<boolean>;
   public produits: Object[];
 
   constructor(private produitsService: ProduitsService, private authService: AuthentificationService, private router: Router) {
     this.user = authService.getUser();
+    this.admin = authService.getAdmin();
     // console.log('Dans le constructeur produits');
   }
 

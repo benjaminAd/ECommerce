@@ -1,0 +1,17 @@
+<div *ngIf="(user|async) && (admin|async)">
+  <form (ngSubmit)="onSubmit()">
+    <label for="nom">Nom du Produit</label>
+    <input type="text" name="nom" id="nom" [(ngModel)]="infos['nom']"/><br/>
+    <label for="type">Type de Produit</label>
+    <input type="text" name="type" id="type" [(ngModel)]="infos['type']"/><br/>
+    <label for="prix">Prix du produit</label>
+    <input type="number" name="prix" id="prix" [(ngModel)]="infos['prix']"/><br/>
+    <label for="marque">Marque du produit</label>
+    <input type="text" name="marque" id="marque" [(ngModel)]="infos['marque']"/><br/>
+    <label for="description">Description</label>
+    <textarea name="description" id="description" cols="30" rows="10"
+              [(ngModel)]="infos['description']"></textarea><br/>
+    <!--<input type="file" (change)="onFileSelected($event)"/><br/>-->
+    <input type="submit" value="Ajouter"/>
+  </form>
+</div>

@@ -17,6 +17,7 @@
   <a routerLink="/Inscription">S'inscrire</a>
 </div>
 
+
 <div *ngIf="(user|async)">
   <a routerLink="/produits">Liste produits</a>
   &nbsp;
@@ -28,10 +29,20 @@
   &nbsp;
   &nbsp;
   &nbsp;
-  <a routerLink="/panier">Mon panier</a>
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  &nbsp;
+  <div *ngIf="!(admin|async)">
+    <a routerLink="/panier">Mon panier</a>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+  </div>
+  <div *ngIf="(admin|async)">
+    <a routerLink="/addProduct">Ajouter un produit</a>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+  </div>
   <a (click)="AuthService.disconnect()">Se Déconnecter de {{user|async}}</a>
 </div>
+

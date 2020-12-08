@@ -21,6 +21,7 @@ export class ConnexionComponent {
       this.message = response['message'];
       if (response['resultat']) {
         this.authService.connect(this.utilisateur.email);
+        this.authService.setAdmin(response['admin']);
         this.route.navigate(['/categories']);
       }
       /*setTimeout(() => {

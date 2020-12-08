@@ -9,9 +9,11 @@ import {Observable} from "rxjs";
 })
 export class MenuComponent implements OnInit {
   public user: Observable<any>;
+  public admin: Observable<any>;
 
   constructor(public AuthService: AuthentificationService) {
     this.user = AuthService.getUser();
+    this.admin = AuthService.getAdmin();
   }
 
   ngOnInit(): void {
