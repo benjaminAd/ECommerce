@@ -22,6 +22,7 @@ export class PanierViewComponent implements OnInit {
   user: String;
   public utilisateur: any;
   public panier: any;
+  public prixTot = 0;
 
   constructor(private http: HttpClient, private authService: AuthentificationService, private router: Router) {
     this.user = this.authService.getEmail();
@@ -33,7 +34,10 @@ export class PanierViewComponent implements OnInit {
     this.http.post("http://localhost:8888/panier", JSON.stringify({email: this.user}), httpOptions).subscribe((resultat: any) => {
       console.log("resultat = " + resultat);
       this.panier = resultat;
-
+      for (let item of this.panier) {
+        let price = parseInt(item['prix']) * parseInt(item['quantite']);
+        this.prixTot += price;
+      }
     });
   }
 
@@ -58,7 +62,7 @@ export class PanierViewComponent implements OnInit {
       newQuantite: newQuantite
     }), httpOptions).subscribe((resultat) => {
       console.log(resultat);
-      //window.location.reload();
+      window.location.reload();
     });
   }
 

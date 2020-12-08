@@ -29,20 +29,13 @@
   &nbsp;
   &nbsp;
   &nbsp;
-  <div *ngIf="!(admin|async)">
-    <a routerLink="/panier">Mon panier</a>
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-  </div>
-  <div *ngIf="(admin|async)">
-    <a routerLink="/addProduct">Ajouter un produit</a>
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-  </div>
+
+  <a *ngIf="!(admin|async)" routerLink="/panier">Mon panier</a>
+  <a *ngIf="(admin|async)" routerLink="/addProduct">Ajouter un produit</a>
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  &nbsp;
   <a (click)="AuthService.disconnect()">Se Déconnecter de {{user|async}}</a>
 </div>
 

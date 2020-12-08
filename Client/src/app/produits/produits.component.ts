@@ -29,7 +29,7 @@ export class ProduitsComponent implements OnInit {
   }
 
   addToBasket(produit, quantite) {
-    this.router.navigate(["/panier/achat/" + produit.nom + "/" + produit.marque + "/" + quantite + "/" + this.authService.getEmail()])
+    this.router.navigate(["/panier/achat/" + produit.nom + "/" + produit.prix + "/" + produit.marque + "/" + quantite + "/" + this.authService.getEmail()])
   }
 
 }

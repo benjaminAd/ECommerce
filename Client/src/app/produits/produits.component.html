@@ -3,7 +3,7 @@ Liste des produits:
 <ul>
   <div *ngFor="let produit of produits">
     <li>{{produit['nom']}}({{produit['type']}})</li>
-    <div *ngIf="!(admin|async)">
+    <div *ngIf="!(admin|async) && (user|async)">
       <input type="text" name="quantite" #quantite id="quantite{{produit['nom']}}"/>
       <button (click)="addToBasket(produit,quantite.value)">Achat</button>
     </div>

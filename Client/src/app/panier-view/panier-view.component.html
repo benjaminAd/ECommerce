@@ -1,12 +1,14 @@
 <div *ngIf="utilisateur|async">
   <ul>
     <div *ngFor="let item of panier">
-      <li>{{item["nom"]}} de la marque : {{item["marque"]}} quantité : <input type="text" #quantity
-                                                                              value="{{item['quantite']}}"/>
+      <li>{{item["nom"]}} de la marque : {{item["marque"]}}, prix: {{item["prix"]}}€ quantité : <input type="text"
+                                                                                                       #quantity
+                                                                                                       value="{{item['quantite']}}"/>
         <button (click)="updateItem(item,quantity.value)">Modifier</button>
       </li>
       <button (click)="deleteItem(item)">Supprimer</button>
     </div>
   </ul>
+  <p>Prix total: {{prixTot}}€</p>
   <button (click)="deleteBasket()">Supprimer Panier</button>
 </div>
