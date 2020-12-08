@@ -29,6 +29,8 @@ export class RechercheComponent implements OnInit {
 
   onSubmit() {
     console.log(this.research);
+    if (this.research.MinPrix === "") this.research.MinPrix = null;
+    if (this.research.MaxPrix === "") this.research.MaxPrix = null;
     this.prodService.getProduitFromResearch(this.research).subscribe(res => {
       console.log(res);
     });

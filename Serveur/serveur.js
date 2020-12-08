@@ -93,70 +93,35 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
     app.post("/produit/research", (req, res) => {
         produits = [];
         try {
-            let query = {
-                "nom": req.body.nom,
-                "type": req.body.categorie,
-                "marque": req.body.marque,
-                "prix": {$gt: req.body.MinPrix, $lt: req.body.MaxPrix}
-            };
-            if (req.body.nom === "") query = {
-                "type": req.body.categorie,
-                "marque": req.body.marque,
-                "prix": {$gt: req.body.MinPrix, $lt: req.body.MaxPrix}
-            };
-            if (req.body.categorie === "") query = {
-                "nom": req.body.nom,
-                "marque": req.body.marque,
-                "prix": {$gt: req.body.MinPrix, $lt: req.body.MaxPrix}
-            };
-            if (req.body.marque === "") query = {
-                "nom": req.body.nom,
-                "type": req.body.categorie,
-                "prix": {$gt: req.body.MinPrix, $lt: req.body.MaxPrix}
-            };
-            if (req.body.MinPrix === null) query = {
-                "nom": req.body.nom,
-                "type": req.body.categorie,
-                "marque": req.body.marque,
-                "prix": {$lt: req.body.MaxPrix}
-            };
-            if (req.body.MaxPrix === null) query = {
-                "nom": req.body.nom,
-                "type": req.body.categorie,
-                "marque": req.body.marque,
-                "prix": {$gt: req.body.MinPrix}
-            };
-            if ((req.body.MaxPrix === null) && (req.body.MinPrix === null)) query = {
-                "nom": req.body.nom,
-                "type": req.body.categorie,
-                "marque": req.body.marque
-            };
-            if ((req.body.nom === "") && (req.body.categorie === "")) query = {
-                "marque": req.body.marque,
-                "prix": {$gt: req.body.MinPrix, $lt: req.body.MaxPrix}
-            };
-            if ((req.body.nom === "") && (req.body.marque === "")) query = {
-                "type": req.body.categorie,
-                "prix": {$gt: req.body.MinPrix, $lt: req.body.MaxPrix}
-            };
-            if ((req.body.nom === "") && (req.body.MinPrix === null)) query = {
-                "type": req.body.categorie,
-                "marque": req.body.marque,
-                "prix": {$lt: req.body.MaxPrix}
-            };
-            if ((req.body.nom === "") && (req.body.MaxPrix === null)) query = {
-                "type": req.body.categorie,
-                "marque": req.body.marque,
-                "prix": {$gt: req.body.MinPrix}
-            };
-            db.collection("produits").find(query).toArray((err, documents) => {
-                for (let doc of documents) {
-                    produits.push(doc);
-                }
-                res.end(JSON.stringify(produits));
-            });
+            if ((req.body.nom === "") && (req.body.categorie === "") && (req.body.marque === "") && (req.body.MaxPrix === null) && (req.body.MinPrix === null)) {
+                console.log("vide");
+                db.collection("produits").find().toArray((err, documents) => {
+                    if (err) throw err;
+                    for (let doc of documents) {
+                        produits.push(doc);
+                    }
+                    res.end(JSON.stringify(produits));
+                });
+            } else {
+                let query = {};
+                if (req.body.nom !== "") query.nom = req.body.nom;
+                if (req.body.categorie !== "") query.type = req.body.categorie;
+                if (req.body.marque !== "") query.marque = req.body.marque;
+                if (req.body.MinPrix !== null) query.prix = {$gt: req.body.MinPrix};
+                if (req.body.MaxPrix !== null) query.prix = {$lt: req.body.MaxPrix};
+                if ((req.body.MinPrix !== null) && (req.body.MaxPrix !== null)) query.prix = {
+                    $gt: req.body.MinPrix,
+                    $lt: req.body.MaxPrix
+                };
+                db.collection("produits").find(query).toArray((err, documents) => {
+                    for (let doc of documents) {
+                        produits.push(doc);
+                    }
+                    res.end(JSON.stringify(produits));
+                });
+            }
         } catch (e) {
-            res.end(JSON.stringify([]));
+            res.end(JSON.stringify({"message": e}));
         }
     });
 
