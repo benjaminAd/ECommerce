@@ -11,6 +11,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import {FormsModule} from "@angular/forms";
 import { PanierComponent } from './panier/panier.component';
 import { PanierViewComponent } from './panier-view/panier-view.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PanierViewComponent } from './panier-view/panier-view.component';
     CategoriesComponent,
     ConnexionComponent,
     PanierComponent,
-    PanierViewComponent
+    PanierViewComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,

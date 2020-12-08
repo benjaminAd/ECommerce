@@ -61,6 +61,16 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
         }
     });
 
+    /* Inscription */
+    app.post("/membre/inscription", (req, res) => {
+        try {
+            db.collection("membres").insertOne(req.body);
+            res.end(JSON.stringify({"resultat": 1, "message": "inscription réussie"}));
+        } catch (e) {
+            res.end(JSON.stringify({"resultat": 0, "message": e}));
+        }
+    });
+
     /* Connexion */
     app.post("/membre/connexion", (req, res) => {
         try {
@@ -133,12 +143,12 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
                     quantite: req.body.quantite,
                     email: req.body.email
                 }, {
-                $set: {
-                    nom: req.body.nom,
-                    marque: req.body.marque,
-                    quantite: req.body.newQuantite,
-                    email: req.body.email
-                }
+                    $set: {
+                        nom: req.body.nom,
+                        marque: req.body.marque,
+                        quantite: req.body.newQuantite,
+                        email: req.body.email
+                    }
                 }, (err, obj) => {
                     if (err) throw err;
                 }

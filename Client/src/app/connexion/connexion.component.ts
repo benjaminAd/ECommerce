@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthentificationService} from "../authentification.service";
 import {Router} from "@angular/router";
+import {sha256} from "js-sha256";
 
 @Component({
   selector: 'app-connexion',
@@ -15,6 +16,7 @@ export class ConnexionComponent {
   }
 
   onSubmit() {
+    this.utilisateur.password = sha256(this.utilisateur.password);
     this.authService.verificationConnexion(this.utilisateur).subscribe(response => {
       this.message = response['message'];
       if (response['resultat']) {

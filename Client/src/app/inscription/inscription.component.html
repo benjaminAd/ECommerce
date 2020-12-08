@@ -1,0 +1,7 @@
+<form (ngSubmit)="onSubmit()">
+  <input type="email" name="email" required [(ngModel)]="utilisateur['email']"/>
+  <input type="password" name="password" required [(ngModel)]="utilisateur['password']"/>
+  <input type="checkbox" id="admin" [(ngModel)]="utilisateur['admin']" name="admin"/>
+  <label for="admin">Admin?</label>
+  <input type="submit" value="S'inscrire"/>
+</form>
