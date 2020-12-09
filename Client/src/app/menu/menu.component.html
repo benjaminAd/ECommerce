@@ -62,49 +62,4 @@
       </div>
   </nav>
 </section>
-<div *ngIf="!(user|async)">
-  <a routerLink="/produits">Liste produits</a>
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  <a routerLink="/categories">Liste catégories</a>
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  <a routerLink="/connexion">Se connecter</a>
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  <a routerLink="/Inscription">S'inscrire</a>
-</div>
-
-
-<div *ngIf="(user|async)">
-  <a routerLink="/produits">Liste produits</a>
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  <a routerLink="/categories">Liste catégories</a>
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  <a routerLink="/rechercher">Rechercher</a>
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  &nbsp;
-
-  <a *ngIf="!(admin|async)" routerLink="/panier">Mon panier</a>
-  <a *ngIf="(admin|async)" routerLink="/addProduct">Ajouter un produit</a>
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  <a (click)="AuthService.disconnect()">Se Déconnecter de {{user|async}}</a>
-</div>
 
