@@ -553,7 +553,7 @@ a[class*="text-"]:not(.nav-link):not(.dropdown-item):not([role]):hover {
   background-color: #ffe161;
 }
 .alert-danger {
-  background-color: #ff9966;
+  background-color: #ff6666;
 }
 .mbr-gallery-filter li.active .btn {
   background-color: #6592e6;
