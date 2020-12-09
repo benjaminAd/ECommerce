@@ -19,7 +19,7 @@
         <div class="row align-items-center">
           <div class="col-12 col-md-3">
             <div class="image-wrapper">
-              <img src="assets/images/mn0005736633-1-5736656-506x506.jpg" alt="Mobirise" />
+              <img src="assets/images/mn0005736633-1-5736656-506x506.jpg" alt="Mobirise"/>
             </div>
           </div>
           <div class="col-12 col-md">
@@ -33,7 +33,7 @@
                     </span>
                   </h6>
                   <p class="mbr-text mbr-fonts-style display-7">
-                    Lorem ipsum dolor sit amet consecuitur.
+                    {{produit['description']}}
                   </p>
                 </div>
                 <div class="col-md-auto">
@@ -41,7 +41,9 @@
                     ${{ produit["prix"] }}
                   </p>
                   <div class="mbr-section-btn">
-                    <input class="form-control" style="width: 100px;" required min=1 max=9999 placeholder="1" type="number" name="quantite" #quantite id="quantite{{produit['nom']}}"/>
+                    <input class="form-control" style="width: 100px;" required min=1 max=9999
+                           placeholder="{{produit['quantite']}}" type="number" name="quantite" #quantite
+                           id="quantite{{produit['nom']}}"/>
                     <a class="btn btn-primary display-4" (click)="updateItem(produit, quantite.value)">
                       Update
                     </a>
@@ -65,11 +67,11 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-12 col-lg-12">
-        <hr class="line" />
+        <hr class="line"/>
         <p class="mbr-text align-center mbr-fonts-style my-4 display-7">
           <strong>Total : </strong><span class="price">${{ prixTot }}</span>
         </p>
-        <hr class="line" />
+        <hr class="line"/>
       </div>
     </div>
   </div>

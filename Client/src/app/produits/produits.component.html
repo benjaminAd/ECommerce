@@ -1,69 +1,75 @@
 <!-- Filters -->
 <section class="form8 cid-sitUdlxivE" id="form8-1d">
   <div class="container">
-      <div class="mbr-section-head">
-          <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5">
-              <strong>Products</strong></h3>
-      </div>
-      <div class="row justify-content-center mt-4">
-          <div class="col-lg-8 mx-auto mbr-form">
-              <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler mx-auto">
-                  <div class="">
-                      <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some problem!</div>
-                  </div>
-                  <div class="dragArea row">
-                      <div class="col-lg-4 col-md-12 col-sm-12 form-group" data-for="name">
-                          <input type="text" name="name" placeholder="Category" data-form-field="name" class="form-control" value="" id="name-form8-1d">
-                      </div>
-                      <div class="col-lg-4 col-md-12 col-sm-12 form-group" data-for="email">
-                          <input type="email" name="email" placeholder="Brand" data-form-field="email" class="form-control" value="" id="email-form8-1d">
-                      </div>
-                      <div class="col-lg-4 col-md-12 col-sm-12 mbr-section-btn align-center"><button type="submit" class="btn btn-primary display-4">Apply filters</button></div>
-                  </div>
-              </form>
+    <div class="mbr-section-head">
+      <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5">
+        <strong>Products</strong></h3>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-lg-8 mx-auto mbr-form">
+        <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler mx-auto">
+          <div class="">
+            <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some problem!
+            </div>
           </div>
+          <div class="dragArea row">
+            <div class="col-lg-4 col-md-12 col-sm-12 form-group" data-for="name">
+              <input type="text" name="name" placeholder="Category" data-form-field="name" class="form-control" value=""
+                     id="name-form8-1d">
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12 form-group" data-for="email">
+              <input type="email" name="email" placeholder="Brand" data-form-field="email" class="form-control" value=""
+                     id="email-form8-1d">
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12 mbr-section-btn align-center">
+              <button type="submit" class="btn btn-primary display-4">Apply filters</button>
+            </div>
+          </div>
+        </form>
       </div>
+    </div>
   </div>
 </section>
 
 <!-- Products list -->
 <section class="features8 cid-sitFsOtzTR" xmlns="http://www.w3.org/1999/html" id="features9-16">
   <div class="container">
-      <div *ngFor="let produit of produits" class="card">
-          <div class="card-wrapper">
-              <div class="row align-items-center">
-                  <div class="col-12 col-md-3">
-                      <div class="image-wrapper">
-                          <img src="assets/images/mn0005736633-1-5736656-506x506.jpg" alt="Mobirise">
-                      </div>
-                  </div>
-                  <div class="col-12 col-md">
-                      <div class="card-box">
-                          <div class="row">
-                              <div class="col-md">
-                                    <h6 class="card-title mbr-fonts-style display-7">
-                                      <strong>{{produit['nom']}}</strong>
-                                      <span style="color:#bbb;">
+    <div *ngFor="let produit of produits" class="card">
+      <div class="card-wrapper">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-3">
+            <div class="image-wrapper">
+              <img src="assets/images/{{produit['nom']}}.jpg" alt="Mobirise">
+            </div>
+          </div>
+          <div class="col-12 col-md">
+            <div class="card-box">
+              <div class="row">
+                <div class="col-md">
+                  <h6 class="card-title mbr-fonts-style display-7">
+                    <strong>{{produit['nom']}}</strong>
+                    <span style="color:#bbb;">
                                         &nbsp;&nbsp;{{produit['type']}}
                                       </span>
-                                    </h6>
-                                  <p class="mbr-text mbr-fonts-style display-7">Lorem ipsum dolor sit amet consecuitur.
-                              </div>
-                              <div class="col-md-auto">
-                                  <p class="price mbr-fonts-style display-7">${{produit['prix']}}</p>
-                                  <div class="mbr-section-btn">
-                                    <input class="form-control" style="width: 100px;" required min=1 max=9999 placeholder="1" type="number" name="quantite" #quantite id="quantite{{produit['nom']}}"/>
-                                    <a class="btn btn-primary display-4" (click)="addToBasket(produit,quantite.value)">
-                                      Add to cart
-                                    </a>
-                                  </div>
-                              </div>
-                              <div></div>
-                          </div>
-                      </div>
+                  </h6>
+                  <p class="mbr-text mbr-fonts-style display-7">{{produit['description']}}
+                </div>
+                <div class="col-md-auto">
+                  <p class="price mbr-fonts-style display-7">${{produit['prix']}}</p>
+                  <div class="mbr-section-btn">
+                    <input class="form-control" style="width: 100px;" required min=1 max=9999 placeholder="1"
+                           type="number" name="quantite" #quantite id="quantite{{produit['nom']}}"/>
+                    <a class="btn btn-primary display-4" (click)="addToBasket(produit,quantite.value)">
+                      Add to cart
+                    </a>
                   </div>
+                </div>
+                <div></div>
               </div>
+            </div>
           </div>
+        </div>
       </div>
+    </div>
   </div>
 </section>

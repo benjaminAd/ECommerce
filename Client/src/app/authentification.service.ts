@@ -34,6 +34,8 @@ export class AuthentificationService {
 
   disconnect() {
     this.user.next(null);
+    this.email = "";
+    this.admin.next(null);
     this.router.navigate(['/connexion']);
   }
 

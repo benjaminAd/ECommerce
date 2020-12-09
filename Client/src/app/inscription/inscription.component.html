@@ -1,38 +1,42 @@
 <!-- Sign up form -->
 <section class="form7 cid-sitDM55BuH" id="form7-11">
   <div class="container">
-      <div class="mbr-section-head">
-          <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"><strong>Welcome !</strong></h3>
-      </div>
-      <div class="row justify-content-center mt-4">
-          <div class="col-lg-8 mx-auto mbr-form">
-              <form (ngSubmit)="onSubmit()" class="mbr-form form-with-styler mx-auto">
-                  <p class="mbr-text mbr-fonts-style align-center mb-4 display-7">Already have an account ? <a class="text-primary" routerLink="/connexion">Sign&nbsp;in</a></p>
-                  <div class="">
-                      <div id="alert-danger" hidden data-form-alert-danger="" class="alert alert-danger col-12">
-                        {{message}}
-                      </div>
-                  </div>
-                  <div class="dragArea row">
-                      <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="email">
-                          <input required type="email" name="email" placeholder="Email" data-form-field="email" class="form-control" value="" id="email" [(ngModel)]="utilisateur['email']">
-                      </div>
-                      <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="password">
-                          <input type="password" name="password" placeholder="Password" data-form-field="password" class="form-control" value="" id="password" [(ngModel)]="utilisateur['password']">
-                      </div>
-                      <!--
-                      <div data-for="confirmPassword" class="col-lg-12 col-md-12 col-sm-12 form-group">
-                          <input type="password" name="confirmPassword" placeholder="Confirm password" data-form-field="confirmPassword" class="form-control" value="" id="confirmPassword" [(ngModel)]="utilisateur['confirmPassword']">
-                      </div>
-                      -->
-                      <div class="col-auto mbr-section-btn align-center">
-                        <button type="submit" class="btn btn-primary display-4">
-                          Sign up
-                        </button>
-                      </div>
-                  </div>
-              </form>
+    <div class="mbr-section-head">
+      <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"><strong>Welcome !</strong></h3>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-lg-8 mx-auto mbr-form">
+        <form (ngSubmit)="onSubmit()" class="mbr-form form-with-styler mx-auto">
+          <p class="mbr-text mbr-fonts-style align-center mb-4 display-7">Already have an account ? <a
+            class="text-primary" routerLink="/connexion">Sign&nbsp;in</a></p>
+          <div class="">
+            <div *ngIf="(message|async)" id="alert-danger" hidden data-form-alert-danger=""
+                 class="alert alert-danger col-12">
+              {{message}}
+            </div>
           </div>
+          <div class="dragArea row">
+            <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="email">
+              <input required type="email" name="email" placeholder="Email" data-form-field="email" class="form-control"
+                     value="" id="email" [(ngModel)]="utilisateur['email']">
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="password">
+              <input type="password" name="password" placeholder="Password" data-form-field="password"
+                     class="form-control" value="" id="password" [(ngModel)]="utilisateur['password']">
+            </div>
+            <!--
+            <div data-for="confirmPassword" class="col-lg-12 col-md-12 col-sm-12 form-group">
+                <input type="password" name="confirmPassword" placeholder="Confirm password" data-form-field="confirmPassword" class="form-control" value="" id="confirmPassword" [(ngModel)]="utilisateur['confirmPassword']">
+            </div>
+            -->
+            <div class="col-auto mbr-section-btn align-center">
+              <button type="submit" class="btn btn-primary display-4">
+                Sign up
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
+    </div>
   </div>
 </section>

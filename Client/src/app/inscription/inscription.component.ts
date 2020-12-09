@@ -3,6 +3,7 @@ import {InscriptionService} from "../inscription.service";
 import {sha256} from "js-sha256";
 import {AuthentificationService} from "../authentification.service";
 import {Router} from "@angular/router";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 
 @Component({
   selector: 'app-inscription',
@@ -10,8 +11,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./inscription.component.css']
 })
 export class InscriptionComponent implements OnInit {
-  public utilisateur = {"email": "", "password": "", "confirmPassword": ""};
-  public message: string;
+  public utilisateur = {"email": "", "password": "", "confirmPassword": "", "admin": false};
+  public message: Subject<String> = new BehaviorSubject(undefined);
 
   constructor(private insService: InscriptionService, private authService: AuthentificationService, private route: Router) {
   }
@@ -22,6 +23,8 @@ export class InscriptionComponent implements OnInit {
   onSubmit() {
     this.insService.verifExist(this.utilisateur.email).subscribe((resultat) => {
       if (resultat['resultat'] === 1) {
+        //if(this.utilisateur.password === this.utilisateur.confirmPassword){
+        if (this.utilisateur.email.includes("@deare.com")) this.utilisateur.admin = true;
         this.utilisateur.password = sha256(this.utilisateur.password);
         this.insService.inscription(this.utilisateur).subscribe((resultat) => {
           this.authService.verificationConnexion(this.utilisateur).subscribe((resultat) => {
@@ -33,8 +36,12 @@ export class InscriptionComponent implements OnInit {
             }
           });
         });
+        //}else{
+        // this.message.next("Les mots de passes ne sont pas identiques!");
+        // }
       } else if (resultat['resultat'] === 0) {
-        this.message = resultat['message'];
+       /* console.log("resultat0 = " + resultat['message']);
+        this.message.next(resultat['message']);*/
       }
     });
   }
