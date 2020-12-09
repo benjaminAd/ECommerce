@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./inscription.component.css']
 })
 export class InscriptionComponent implements OnInit {
-  public utilisateur = {"email": "", "password": "", "admin": ""};
+  public utilisateur = {"email": "", "password": "", "confirmPassword": ""};
   public message: string;
 
   constructor(private insService: InscriptionService, private authService: AuthentificationService, private route: Router) {
