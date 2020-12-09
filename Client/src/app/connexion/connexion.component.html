@@ -1,36 +1,41 @@
 <!-- Sign in form -->
 <section class="form7 cid-sitB3N65mv" id="form7-z">
   <div class="container">
-      <div class="mbr-section-head">
-          <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5">
-            <strong>Welcome back !</strong>
-          </h3>
-      </div>
-      <div class="row justify-content-center mt-4">
-          <div class="col-lg-8 mx-auto mbr-form">
-              <form (ngSubmit)="onSubmit()" class="mbr-form form-with-styler mx-auto">
-                  <p class="mbr-text mbr-fonts-style align-center mb-4 display-7">
-                      Don't have an account ?
-                      <a class="text-primary" routerLink="/Inscription">
-                        Sign up
-                      </a>
-                  </p>
-                  <div class="">
-                      <div id="alert-danger" hidden data-form-alert-danger="" class="alert alert-danger display-4 col-12">
-                        {{message}}
-                      </div>
-                  </div>
-                  <div class="dragArea row">
-                      <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="email">
-                          <input required type="email" name="email" placeholder="Email" data-form-field="email" class="form-control" value="" id="email" [(ngModel)]="utilisateur['email']">
-                      </div>
-                      <div data-for="password" class="col-lg-12 col-md-12 col-sm-12 form-group">
-                          <input required type="text" name="password" placeholder="Password" data-form-field="password" class="form-control" value="" id="password" [(ngModel)]="utilisateur['password']">
-                      </div>
-                      <div class="col-auto mbr-section-btn align-center"><button type="submit" class="btn btn-primary display-4">Sign in</button></div>
-                  </div>
-              </form>
+    <div class="mbr-section-head">
+      <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5">
+        <strong>Welcome back !</strong>
+      </h3>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-lg-8 mx-auto mbr-form">
+        <form (ngSubmit)="onSubmit()" class="mbr-form form-with-styler mx-auto">
+          <p class="mbr-text mbr-fonts-style align-center mb-4 display-7">
+            Don't have an account ?
+            <a class="text-primary" routerLink="/Inscription">
+              Sign up
+            </a>
+          </p>
+          <div class="">
+            <div *ngIf="message" id="alert-danger" data-form-alert-danger=""
+                 class="alert alert-danger display-4 col-12">
+              {{message}}
+            </div>
           </div>
+          <div class="dragArea row">
+            <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="email">
+              <input required type="email" name="email" placeholder="Email" data-form-field="email" class="form-control"
+                     value="" id="email" [(ngModel)]="utilisateur['email']">
+            </div>
+            <div data-for="password" class="col-lg-12 col-md-12 col-sm-12 form-group">
+              <input required type="password" name="password" placeholder="Password" data-form-field="password"
+                     class="form-control" value="" id="password" [(ngModel)]="utilisateur['password']">
+            </div>
+            <div class="col-auto mbr-section-btn align-center">
+              <button type="submit" class="btn btn-primary display-4">Sign in</button>
+            </div>
+          </div>
+        </form>
       </div>
+    </div>
   </div>
 </section>

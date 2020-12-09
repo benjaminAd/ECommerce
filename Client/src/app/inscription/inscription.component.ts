@@ -12,7 +12,8 @@ import {BehaviorSubject, Observable, Subject} from "rxjs";
 })
 export class InscriptionComponent implements OnInit {
   public utilisateur = {"email": "", "password": "", "confirmPassword": "", "admin": false};
-  public message: Subject<String> = new BehaviorSubject(undefined);
+  //public message: Subject<String> = new BehaviorSubject(undefined);
+  public message: string;
 
   constructor(private insService: InscriptionService, private authService: AuthentificationService, private route: Router) {
   }
@@ -25,7 +26,7 @@ export class InscriptionComponent implements OnInit {
       if (resultat['resultat'] === 1) {
         //if(this.utilisateur.password === this.utilisateur.confirmPassword){
         if (this.utilisateur.email.includes("@deare.com")) this.utilisateur.admin = true;
-        this.utilisateur.password = sha256(this.utilisateur.password);
+        //this.utilisateur.password = sha256(this.utilisateur.password);
         this.insService.inscription(this.utilisateur).subscribe((resultat) => {
           this.authService.verificationConnexion(this.utilisateur).subscribe((resultat) => {
             if (resultat['resultat']) {
@@ -37,11 +38,12 @@ export class InscriptionComponent implements OnInit {
           });
         });
         //}else{
-        // this.message.next("Les mots de passes ne sont pas identiques!");
+        // this.message="Les mots de passes ne sont pas identiques!";
         // }
       } else if (resultat['resultat'] === 0) {
-       /* console.log("resultat0 = " + resultat['message']);
-        this.message.next(resultat['message']);*/
+        console.log("resultat0 = " + resultat['message']);
+        //this.message.next(resultat['message']);
+        this.message = resultat['message'];
       }
     });
   }

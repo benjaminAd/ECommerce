@@ -143,6 +143,8 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
     /* Inscription */
     app.post("/membre/inscription", (req, res) => {
         try {
+            var sha = require('js-sha256');
+            req.body.password = sha.sha256(req.body.password);
             db.collection("membres").insertOne(req.body);
             res.end(JSON.stringify({"resultat": 1, "message": "inscription réussie"}));
         } catch (e) {
@@ -153,6 +155,8 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
     /* Connexion */
     app.post("/membre/connexion", (req, res) => {
         try {
+            var sha = require('js-sha256');
+            req.body.password = sha.sha256(req.body.password);
             db.collection("membres")
                 .find(req.body)
                 .toArray((err, documents) => {

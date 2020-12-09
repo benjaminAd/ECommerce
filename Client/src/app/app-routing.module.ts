@@ -11,6 +11,7 @@ import {AddProduitComponent} from "./add-produit/add-produit.component";
 import {RechercheComponent} from "./recherche/recherche.component";
 
 const routes: Routes = [
+  {path: '', redirectTo: 'produits', pathMatch: 'full'},
   {path: 'produits', component: ProduitsComponent},
   {path: 'categories', component: CategoriesComponent},
   {path: 'connexion', component: ConnexionComponent},

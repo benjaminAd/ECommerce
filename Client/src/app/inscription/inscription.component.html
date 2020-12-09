@@ -10,7 +10,7 @@
           <p class="mbr-text mbr-fonts-style align-center mb-4 display-7">Already have an account ? <a
             class="text-primary" routerLink="/connexion">Sign&nbsp;in</a></p>
           <div class="">
-            <div *ngIf="(message|async)" id="alert-danger" hidden data-form-alert-danger=""
+            <div *ngIf="message" id="alert-danger" data-form-alert-danger=""
                  class="alert alert-danger col-12">
               {{message}}
             </div>

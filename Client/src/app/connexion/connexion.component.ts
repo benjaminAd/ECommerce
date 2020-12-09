@@ -10,13 +10,13 @@ import {sha256} from "js-sha256";
 })
 export class ConnexionComponent {
   public utilisateur = {"email": "", "password": ""};
-  public message: string = "";
+  public message: string;
 
   constructor(private authService: AuthentificationService, private route: Router) {
   }
 
   onSubmit() {
-    this.utilisateur.password = sha256(this.utilisateur.password);
+    //this.utilisateur.password = sha256(this.utilisateur.password);
     this.authService.verificationConnexion(this.utilisateur).subscribe(response => {
       this.message = response['message'];
       if (response['resultat']) {
