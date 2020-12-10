@@ -5,9 +5,12 @@
       <div class="col-lg-3 offset-lg-1 mbr-form">
         <form (ngSubmit)="onSubmit()" class="mbr-form form-with-styler">
           <div class="">
-            <div *ngIf="message" id="alert-danger" data-form-alert-danger=""
-              class="alert alert-danger display-4 col-12">
+            <div *ngIf="message">
               {{message}}
+            </div>
+            <div *ngIf="error" id="alert-danger" data-form-alert-danger=""
+                 class="alert alert-danger display-4 col-12">
+              {{error}}
             </div>
           </div>
           <div class="dragArea row">
@@ -18,33 +21,33 @@
             </div>
             <div class="col-lg-12 col-md col-12 form-group" data-for="nom">
               <input required type="text" name="nom" placeholder="Product name" data-form-field="nom"
-                class="form-control" value="" id="nom" [(ngModel)]="infos['nom']" />
+                     class="form-control" value="" id="nom" [(ngModel)]="infos['nom']"/>
             </div>
 
             <div class="col-lg-12 col-md col-12 form-group" data-for="type">
               <input required type="text" name="type" placeholder="Category" data-form-field="type" class="form-control"
-                value="" id="type" [(ngModel)]="infos['type']" />
+                     value="" id="type" [(ngModel)]="infos['type']"/>
             </div>
 
             <div class="col-lg-12 col-md col-12 form-group" data-for="marque">
               <input required type="text" name="marque" placeholder="Brand" data-form-field="marque"
-                class="form-control" value="" id="marque" [(ngModel)]="infos['marque']" />
+                     class="form-control" value="" id="marque" [(ngModel)]="infos['marque']"/>
             </div>
 
             <div class="col-lg-12 col-md col-12 form-group" data-for="prix">
               <input required type="number" min="0" name="prix" placeholder="Price" data-form-field="prix"
-                class="form-control" value="" id="prix" [(ngModel)]="infos['prix']" />
+                     class="form-control" value="" id="prix" [(ngModel)]="infos['prix']"/>
             </div>
 
             <div class="col-lg-12 col-md col-12 form-group" data-for="image">
               <input required type="text" name="image" placeholder="Image URL" data-form-field="image"
-                class="form-control" value="" id="image" [(ngModel)]="infos['image']" />
+                     class="form-control" value="" id="image" [(ngModel)]="infos['image']"/>
             </div>
 
             <div class="col-lg-12 col-md col-12 form-group" data-for="description">
               <textarea required cols="30" rows="10" name="description" placeholder="Description"
-                data-form-field="description" class="form-control" value="" id="description"
-                [(ngModel)]="infos['description']"></textarea>
+                        data-form-field="description" class="form-control" value="" id="description"
+                        [(ngModel)]="infos['description']"></textarea>
             </div>
 
             <div class="col-12 col-md-auto mbr-section-btn">
@@ -57,7 +60,7 @@
       </div>
       <div class="col-lg-7 offset-lg-1 col-12">
         <div class="image-wrapper">
-          <img class="w-100" src="assets/images/undraw-add-to-cart-vkjp.svg" alt="Woman adding product" />
+          <img class="w-100" src="assets/images/undraw-add-to-cart-vkjp.svg" alt="Woman adding product"/>
         </div>
       </div>
     </div>

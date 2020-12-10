@@ -18,13 +18,11 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
 
     /* Liste des produits */
     app.get("/produits", (req, res) => {
-        console.log("/produits");
         try {
             db.collection("produits").find().toArray((err, documents) => {
                 res.end(JSON.stringify(documents));
             });
         } catch (e) {
-            console.log("Erreur sur /produits : " + e);
             res.end(JSON.stringify([]));
         }
     });
@@ -32,7 +30,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
     /*Ajout Produit*/
     app.post("/produits/ajouter", (req, res) => {
         try {
-            console.log(req.body);
             db.collection("produits").insertOne(req.body);
             res.end(JSON.stringify(req.body));
         } catch (e) {
@@ -43,13 +40,11 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
     /* Liste des produits suivant une catégorie */
     app.get("/produits/:categorie", (req, res) => {
         let categorie = req.params.categorie;
-        console.log("/produits/" + categorie);
         try {
             db.collection("produits").find({type: categorie}).toArray((err, documents) => {
                 res.end(JSON.stringify(documents));
             });
         } catch (e) {
-            console.log("Erreur sur /produits/" + categorie + " : " + e);
             res.end(JSON.stringify([]));
         }
     });
@@ -66,7 +61,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
                 res.end(JSON.stringify(categories));
             });
         } catch (e) {
-            console.log("Erreur sur /categories : " + e);
             res.end(JSON.stringify([]));
         }
     });
@@ -82,7 +76,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
                 res.end(JSON.stringify(marques));
             });
         } catch (e) {
-            console.log("Erreur sur /marques : " + e);
             res.end(JSON.stringify([]));
         }
     });
@@ -90,7 +83,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
     /*delete item*/
     app.post('/produits/delete', (req, res) => {
         try {
-            console.log(req.body);
             db.collection("produits").deleteOne({
                 nom: req.body.nom,
                 type: req.body.type,
@@ -105,10 +97,9 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
 
     /*Recherche produit*/
     app.post("/produit/research", (req, res) => {
-        produits = [];
+        let produits = [];
         try {
             if ((req.body.nom === "null") && (req.body.categorie === "null") && (req.body.marque === "null") && (req.body.MaxPrix === "null") && (req.body.MinPrix === "null")) {
-                console.log("vide");
                 db.collection("produits").find().sort({nom: 1}).toArray((err, documents) => {
                     if (err) throw err;
                     for (let doc of documents) {
@@ -127,7 +118,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
                     $gt: parseInt(req.body.MinPrix),
                     $lt: parseInt(req.body.MaxPrix)
                 };
-                console.log(query);
                 db.collection("produits").find(query).sort({nom: 1}).toArray((err, documents) => {
                     for (let doc of documents) {
                         produits.push(doc);
@@ -191,7 +181,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
 
     /*Ajout au panier*/
     app.post("/panier/ajout", (req, res) => {
-        //console.log("route : /produit/ajout avec " + JSON.stringify(req.body));
         try {
             db.collection("panier").insertOne(req.body);
             res.end(JSON.stringify({"response": "ajout d'un produit dans le panier"}));
@@ -209,7 +198,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
                 for (let doc of document) {
                     panier.push(doc);
                 }
-                console.log(panier);
                 res.end(JSON.stringify(panier));
             })
         } catch (e) {
@@ -220,7 +208,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
     // Supprimer un article du panier
     app.post('/panier/delete', (req, res) => {
         try {
-            //console.log(req.body.nom);
             db.collection("panier").deleteOne({
                 nom: req.body.nom,
                 marque: req.body.marque,
@@ -228,7 +215,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
                 email: req.body.email
             }, (err, obj) => {
                 if (err) throw err;
-                //console.log("élément effacé");
             });
             res.end(JSON.stringify(req.body.nom));
         } catch (e) {
@@ -238,7 +224,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
 
     //update quantite panier
     app.post("/panier/update", (req, res) => {
-        console.log(req.body.quantite + "  " + req.body.newQuantite);
         try {
             db.collection("panier").updateOne({
                     nom: req.body.nom,
@@ -264,7 +249,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
 
     //Delete Basket
     app.post("/panier/deleteBasket", (req, res) => {
-        // console.log(req.body.email);
         try {
             db.collection("panier").deleteMany({email: req.body.email}, (err, obj) => {
                 if (err) throw err;
@@ -278,7 +262,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
 
     /*UploadImage*/
     app.post("/uploadImage", (req, res) => {
-        console.log(req.body);
     });
 });
 

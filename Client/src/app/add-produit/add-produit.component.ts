@@ -14,6 +14,9 @@ export class AddProduitComponent implements OnInit {
   public admin: Observable<any>;
   public file: File;
   public infos = {"nom": "", "type": "", "prix": "", "marque": "", "image": "", "description": ""};
+  public message: string;
+  public error: string;
+
 
   constructor(private authService: AuthentificationService, private ProdService: ProduitsService, private route: Router) {
     this.user = this.authService.getUser();
@@ -21,12 +24,12 @@ export class AddProduitComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  /*
-    if(false) {
-      this.route.navigate([""]);
-    }
-    console.log(this.admin);
-    */
+    /*
+      if(false) {
+        this.route.navigate([""]);
+      }
+      console.log(this.admin);
+      */
   }
 
   /*  onFileSelected(event) {
@@ -35,18 +38,25 @@ export class AddProduitComponent implements OnInit {
     }*/
 
   onSubmit() {
-    if ((this.infos.nom !== "") && (this.infos.type !== "") && (this.infos.marque !== "") && (this.infos.prix !== "") && (this.infos.image !== "") && (this.infos.description !== ""))
-      this.ProdService.addProduit(this.infos).subscribe(res => {
-        console.log(res);
-        this.route.navigate(['/produits']);
-        //const uploadData = new FormData();
-        //uploadData.append('myFile', this.file, this.file.name);
-        //this.http.post("http://localhost:8888/uploadImage", {"image": uploadData}, httpOptions).subscribe(res => {
+    if ((this.infos.nom !== "") && (this.infos.type !== "") && (this.infos.marque !== "") && (this.infos.prix !== "") && (this.infos.image !== "") && (this.infos.description !== "")) {
+      if (parseInt(this.infos.prix) > 0)
+        this.ProdService.addProduit(this.infos).subscribe(res => {
+          this.error = null;
+          this.message = "Le produit a bien été ajouter";
+          //const uploadData = new FormData();
+          //uploadData.append('myFile', this.file, this.file.name);
+          //this.http.post("http://localhost:8888/uploadImage", {"image": uploadData}, httpOptions).subscribe(res => {
 
-        //});
-      });
-    else
-      this.route.navigate(['/produits']);
+          //});
+        });
+      else {
+        this.message = null;
+        this.error = "Le prix doit être supérieur ou égale à 0";
+      }
+    } else {
+      this.message = null;
+      this.error = "Vous devez remplir tout les champs";
+    }
   }
 
 }

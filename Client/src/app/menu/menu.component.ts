@@ -24,9 +24,7 @@ export class MenuComponent implements OnInit {
       this.categories = res;
     });
     this.user.subscribe(res => {
-      console.log("res = " + res);
       this.email = res;
-      console.log("email = " + this.email);
     });
   }
 
