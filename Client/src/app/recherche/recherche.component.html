@@ -92,7 +92,8 @@
                 class="form-control"
                 [(ngModel)]="research['categorie']"
               >
-                <option value="null">- Choose a category -</option>
+                <option value="null" disabled>- Category -</option>
+                <option value="null">All</option>
                 <option *ngFor="let cat of categories" value="{{cat}}">{{cat}}</option>
               </select>
             </div>
@@ -107,7 +108,8 @@
                 class="form-control"
                 [(ngModel)]="research['marque']"
               >
-                <option value="null">- Choose a brand -</option>
+                <option value="null" disabled>- Brand -</option>
+                <option value="null">All</option>
                 <option *ngFor="let marque of marques" value="{{marque}}">{{marque}}</option>
               </select>
             </div>
