@@ -41,121 +41,121 @@
     >
       -->
 
-    <!-- Filters -->
-    <section class="form8 cid-sitUdlxivE" id="form8-1d">
-      <div class="container">
-        <div class="mbr-section-head">
-          <h3
-            class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"
-          >
-            <strong>Products</strong>
-          </h3>
-        </div>
-        <div class="row justify-content-center mt-4">
-          <div class="col-lg-8 mx-auto mbr-form">
-            <form
-              (ngSubmit)="onSubmit()"
-              class="mbr-form form-with-styler mx-auto"
+<!-- Filters -->
+<section class="form8 cid-sitUdlxivE" id="form8-1d">
+  <div class="container">
+    <div class="mbr-section-head">
+      <h3
+        class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"
+      >
+        <strong>Products</strong>
+      </h3>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-lg-8 mx-auto mbr-form">
+        <form
+          (ngSubmit)="onSubmit()"
+          class="mbr-form form-with-styler mx-auto"
+        >
+          <div class="">
+            <div
+              hidden="hidden"
+              data-form-alert-danger=""
+              class="alert alert-danger col-12"
             >
-              <div class="">
-                <div
-                  hidden="hidden"
-                  data-form-alert-danger=""
-                  class="alert alert-danger col-12"
-                >
-                  Oops...! some problem!
-                </div>
-              </div>
-              <div class="dragArea row">
-                <div
-                  class="col-lg-4 col-md-12 col-sm-12 form-group"
-                  data-for="recherche"
-                >
-                  <input
-                    type="text"
-                    name="recherche"
-                    placeholder="Product name"
-                    data-form-field="recherche"
-                    class="form-control"
-                    value=""
-                    [(ngModel)]="research['nom']"
-                  />
-                </div>
-
-                <div
-                  class="col-lg-4 col-md-12 col-sm-12 form-group"
-                  data-for="defaultCat"
-                >
-                  <select
-                    id="defaultCat"
-                    name="categorie"
-                    class="form-control"
-                    [(ngModel)]="research['categorie']"
-                  >
-                    <option value="null">- Choose a category -</option>
-                    <option value="Smartphone">Smartphone</option>
-                  </select>
-                </div>
-
-                <div
-                  class="col-lg-4 col-md-12 col-sm-12 form-group"
-                  data-for="defautMarque"
-                >
-                  <select
-                    id="defautMarque"
-                    name="marque"
-                    class="form-control"
-                    [(ngModel)]="research['marque']"
-                  >
-                    <option value="null">- Choose a brand -</option>
-                    <option value="Apple">Apple</option>
-                  </select>
-                </div>
-
-                <div
-                  class="col-lg-4 col-md-12 col-sm-12 form-group"
-                  data-for="prixmin"
-                >
-                  <input
-                    type="number"
-                    id="prixmin"
-                    name="prixmin"
-                    min="0"
-                    placeholder="Min. price"
-                    data-form-field="prixmin"
-                    class="form-control"
-                    value=""
-                    [(ngModel)]="research['MinPrix']"
-                  />
-                </div>
-
-                <div
-                  class="col-lg-4 col-md-12 col-sm-12 form-group"
-                  data-for="prixmax"
-                >
-                  <input
-                    type="number"
-                    id="prixmax"
-                    name="prixmax"
-                    min="0"
-                    placeholder="Max. price"
-                    data-form-field="prixmax"
-                    class="form-control"
-                    value=""
-                    [(ngModel)]="research['MaxPrix']"
-                  />
-                </div>
-
-                <div
-                  class="col-lg-4 col-md-12 col-sm-12 mbr-section-btn align-center"
-                >
-                  <button type="submit" class="btn btn-primary display-4">
-                    Apply filters
-                  </button>
-                </div>
-              </div>
-            </form>
+              Oops...! some problem!
+            </div>
           </div>
-        </div>
+          <div class="dragArea row">
+            <div
+              class="col-lg-4 col-md-12 col-sm-12 form-group"
+              data-for="recherche"
+            >
+              <input
+                type="text"
+                name="recherche"
+                placeholder="Product name"
+                data-form-field="recherche"
+                class="form-control"
+                value=""
+                [(ngModel)]="research['nom']"
+              />
+            </div>
+
+            <div
+              class="col-lg-4 col-md-12 col-sm-12 form-group"
+              data-for="defaultCat"
+            >
+              <select
+                id="defaultCat"
+                name="categorie"
+                class="form-control"
+                [(ngModel)]="research['categorie']"
+              >
+                <option value="null">- Choose a category -</option>
+                <option *ngFor="let cat of categories" value="{{cat}}">{{cat}}</option>
+              </select>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-12 col-sm-12 form-group"
+              data-for="defautMarque"
+            >
+              <select
+                id="defautMarque"
+                name="marque"
+                class="form-control"
+                [(ngModel)]="research['marque']"
+              >
+                <option value="null">- Choose a brand -</option>
+                <option *ngFor="let marque of marques" value="{{marque}}">{{marque}}</option>
+              </select>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-12 col-sm-12 form-group"
+              data-for="prixmin"
+            >
+              <input
+                type="number"
+                id="prixmin"
+                name="prixmin"
+                min="0"
+                placeholder="Min. price"
+                data-form-field="prixmin"
+                class="form-control"
+                value=""
+                [(ngModel)]="research['MinPrix']"
+              />
+            </div>
+
+            <div
+              class="col-lg-4 col-md-12 col-sm-12 form-group"
+              data-for="prixmax"
+            >
+              <input
+                type="number"
+                id="prixmax"
+                name="prixmax"
+                min="0"
+                placeholder="Max. price"
+                data-form-field="prixmax"
+                class="form-control"
+                value=""
+                [(ngModel)]="research['MaxPrix']"
+              />
+            </div>
+
+            <div
+              class="col-lg-4 col-md-12 col-sm-12 mbr-section-btn align-center"
+            >
+              <button type="submit" class="btn btn-primary display-4">
+                Apply filters
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-    </section>
+    </div>
+  </div>
+</section>

@@ -107,12 +107,13 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
                 if (req.body.nom !== "null") query.nom = req.body.nom;
                 if (req.body.categorie !== "null") query.type = req.body.categorie;
                 if (req.body.marque !== "null") query.marque = req.body.marque;
-                if (req.body.MinPrix !== "null") query.prix = {$gt: req.body.MinPrix};
-                if (req.body.MaxPrix !== "null") query.prix = {$lt: req.body.MaxPrix};
+                if (req.body.MinPrix !== "null") query.prix = {$gt: parseInt(req.body.MinPrix)};
+                if (req.body.MaxPrix !== "null") query.prix = {$lt: parseInt(req.body.MaxPrix)};
                 if ((req.body.MinPrix !== "null") && (req.body.MaxPrix !== "null")) query.prix = {
-                    $gt: req.body.MinPrix,
-                    $lt: req.body.MaxPrix
+                    $gt: parseInt(req.body.MinPrix),
+                    $lt: parseInt(req.body.MaxPrix)
                 };
+                console.log(query);
                 db.collection("produits").find(query).toArray((err, documents) => {
                     for (let doc of documents) {
                         produits.push(doc);
