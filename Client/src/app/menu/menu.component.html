@@ -3,17 +3,30 @@
   <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
     <div class="container">
       <div class="navbar-brand">
-              <span class="navbar-logo">
-                  <a href="index.html">
-                      <img src="assets/images/user-interface.svg" alt="Deare" style="height: 3.8rem;">
-                  </a>
-              </span>
-        <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-5"
-                                             href="index.html">Deare</a></span>
+        <span class="navbar-logo">
+          <a routerLink="">
+            <img
+              src="assets/images/user-interface.svg"
+              alt="Deare"
+              style="height: 3.8rem"
+            />
+          </a>
+        </span>
+        <span class="navbar-caption-wrap"
+          ><a class="navbar-caption text-primary display-5" routerLink=""
+            >Deare</a
+          ></span
+        >
       </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse"
-              data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-              aria-label="Toggle navigation">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <div class="hamburger">
           <span></span>
           <span></span>
@@ -23,42 +36,81 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-          <li class="nav-item"><a class="nav-link link text-black text-primary display-4"
-                                  routerLink="/produits">Browse all</a></li>
-          <li class="nav-item dropdown"><a class="nav-link link text-black dropdown-toggle display-4"
-                                           href="#" data-toggle="dropdown-submenu" aria-expanded="false">
-            Categories</a>
-            <div class="dropdown-menu"><a *ngFor="let cat of categories"
-                                          class="text-black dropdown-item text-primary display-4"
-                                          href="products.html">{{cat}}</a></div>
+          <li class="nav-item">
+            <a
+              class="nav-link link text-black text-primary display-4"
+              routerLink="/produits"
+              >Browse all</a
+            >
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link link text-black dropdown-toggle display-4"
+              href="#"
+              data-toggle="dropdown-submenu"
+              aria-expanded="false"
+            >
+              Categories</a
+            >
+            <div class="dropdown-menu">
+              <a
+                *ngFor="let cat of categories"
+                class="text-black dropdown-item text-primary display-4"
+                href="products.html"
+                >{{ cat }}</a
+              >
+            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link link text-black text-primary display-4" routerLink="/panier">
-                          <span class="mobi-mbri mobi-mbri-cart-add mbr-iconfont mbr-iconfont-btn">
-                          </span>
+            <a
+              *ngIf="user | async"
+              class="nav-link link text-black text-primary display-4"
+              routerLink="/panier"
+            >
+              <span
+                class="mobi-mbri mobi-mbri-cart-add mbr-iconfont mbr-iconfont-btn"
+              >
+              </span>
               My cart
             </a>
           </li>
         </ul>
         <div class="navbar-buttons mbr-section-btn">
-          <a *ngIf="(admin|async)" class="btn btn-primary display-4" routerLink="/addProduct">
-                    <span class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn">
-                    </span>
+          <a
+            *ngIf="admin | async"
+            class="btn btn-primary display-4"
+            routerLink="/addProduct"
+          >
+            <span
+              class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"
+            >
+            </span>
             Add product
           </a>
-          <a *ngIf="!(user|async)" class="btn btn-primary display-4" routerLink="/connexion">
-                      <span class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn">
-                      </span>
+          <a
+            *ngIf="!(user | async)"
+            class="btn btn-primary display-4"
+            routerLink="/connexion"
+          >
+            <span
+              class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"
+            >
+            </span>
             Sign in
           </a>
-          <a *ngIf="(user|async)" class="btn btn-primary display-4" (click)="AuthService.disconnect()">
-                    <span class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn">
-                    </span>
-            {{user|async}}
+          <a
+            *ngIf="user | async"
+            class="btn btn-primary display-4"
+            (click)="AuthService.disconnect()"
+          >
+            <span
+              class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"
+            >
+            </span>
+            {{ user | async }}
           </a>
         </div>
       </div>
     </div>
   </nav>
 </section>
-
