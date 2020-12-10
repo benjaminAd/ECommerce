@@ -1,98 +1,131 @@
-<div>
-  <form (ngSubmit)="onSubmit()">
-    <input type="text" name="recherche" placeholder="Recherche" [(ngModel)]="research['nom']"/><br>
-    <label>Catégories</label><br>
-    <label for="defautCat">Défaut</label><input type="radio" id="defautCat" name="categorie" value=""
-                                                [(ngModel)]="research['categorie']" checked/>
-    <span *ngFor="let cat of categories"><label for="{{cat}}">{{cat}}</label><input type="radio" id="{{cat}}"
-                                                                                    name="categorie" value="{{cat}}"
-                                                                                    [(ngModel)]="research['categorie']"/>&nbsp;&nbsp;</span><br>
-    <label>Marques</label><br>
-    <label for="defautMarque">Défaut</label><input type="radio" id="defautMarque" name="marque" value=""
-                                                   [(ngModel)]="research['marque']" checked/>
-    <span *ngFor="let marque of marques"><label for="{{marque}}">{{marque}}</label><input type="radio"
-                                                                                          id="{{marque}}"
-                                                                                          name="marque"
-                                                                                          value="{{marque}}"
-                                                                                          [(ngModel)]="research['marque']"/>&nbsp;&nbsp;</span><br>
-    <label for="prixmin">Prix minimum:</label><input type="number" id="prixmin" name="prixmin"
-                                                     [(ngModel)]="research['MinPrix']"/> <label for="prixmax">Prix
-    maximum:</label><input type="number" id="prixmax" name="prixmax" [(ngModel)]="research['MaxPrix']"/> <br>
+<!--
+    <label>Catégories</label><br />
+    <label for="defautCat">Défaut</label
+    ><input
+      type="radio"
+      id="defautCat"
+      name="categorie"
+      value=""
+      [(ngModel)]="research['categorie']"
+      checked
+    />
+    <span *ngFor="let cat of categories"
+      ><label for="{{ cat }}">{{ cat }}</label
+      ><input
+        type="radio"
+        id="{{ cat }}"
+        name="categorie"
+        value="{{ cat }}"
+        [(ngModel)]="research['categorie']"
+      />&nbsp;&nbsp;</span
+    ><br />
+    <label>Marques</label><br />
+    <label for="defautMarque">Défaut</label
+    ><input
+      type="radio"
+      id="defautMarque"
+      name="marque"
+      value=""
+      [(ngModel)]="research['marque']"
+      checked
+    />
+    <span *ngFor="let marque of marques"
+      ><label for="{{ marque }}">{{ marque }}</label
+      ><input
+        type="radio"
+        id="{{ marque }}"
+        name="marque"
+        value="{{ marque }}"
+        [(ngModel)]="research['marque']"
+      />&nbsp;&nbsp;</span
+    >
+      -->
 
-    <input type="submit" value="Rechercher"/>
-  </form>
-  <ul *ngFor="let r of res">
-    <li>{{r['nom']}}({{r['type']}})</li>
-    <div *ngIf="!(admin|async) && (user|async)">
-      <input type="text" name="quantite" #quantite id="quantite{{r['nom']}}"/>
-      <button (click)="addToBasket(r,quantite.value)">Achat</button>
-    </div>
-  </ul>
-</div>
+    <!-- Filters -->
+    <section class="form8 cid-sitUdlxivE" id="form8-1d">
+      <div class="container">
+        <div class="mbr-section-head">
+          <h3
+            class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"
+          >
+            <strong>Products</strong>
+          </h3>
+        </div>
+        <div class="row justify-content-center mt-4">
+          <div class="col-lg-8 mx-auto mbr-form">
+            <form
+              (ngSubmit)="onSubmit()"
+              class="mbr-form form-with-styler mx-auto"
+            >
+              <div class="">
+                <div
+                  hidden="hidden"
+                  data-form-alert-danger=""
+                  class="alert alert-danger col-12"
+                >
+                  Oops...! some problem!
+                </div>
+              </div>
+              <div class="dragArea row">
+                <div
+                  class="col-lg-4 col-md-12 col-sm-12 form-group"
+                  data-for="recherche"
+                >
+                  <input
+                    type="text"
+                    name="recherche"
+                    placeholder="Product name"
+                    data-form-field="recherche"
+                    class="form-control"
+                    value=""
+                    [(ngModel)]="research['nom']"
+                  />
+                </div>
 
-<!-- Filters -->
-<section class="form8 cid-sitUdlxivE" id="form8-1d">
-  <div class="container">
-    <div class="mbr-section-head">
-      <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5">
-        <strong>Products</strong>
-      </h3>
-    </div>
-    <div class="row justify-content-center mt-4">
-      <div class="col-lg-8 mx-auto mbr-form">
-        <form
-          action="https://mobirise.eu/"
-          method="POST"
-          class="mbr-form form-with-styler mx-auto"
-        >
-          <div class="">
-            <div
-              hidden="hidden"
-              data-form-alert-danger=""
-              class="alert alert-danger col-12"
-            >
-              Oops...! some problem!
-            </div>
+                <div
+                  class="col-lg-4 col-md-12 col-sm-12 form-group"
+                  data-for="prixmin"
+                >
+                  <input
+                    type="number"
+                    id="prixmin"
+                    name="prixmin"
+                    min="0"
+                    placeholder="Min. price"
+                    data-form-field="prixmin"
+                    class="form-control"
+                    value=""
+                    [(ngModel)]="research['MinPrix']"
+                  />
+                </div>
+
+                <div
+                  class="col-lg-4 col-md-12 col-sm-12 form-group"
+                  data-for="prixmax"
+                >
+                  <input
+                    type="number"
+                    id="prixmax"
+                    name="prixmax"
+                    min="0"
+                    placeholder="Max. price"
+                    data-form-field="prixmax"
+                    class="form-control"
+                    value=""
+                    [(ngModel)]="research['MaxPrix']"
+                  />
+                </div>
+
+                <div
+                  class="col-lg-4 col-md-12 col-sm-12 mbr-section-btn align-center"
+                >
+                  <button type="submit" class="btn btn-primary display-4">
+                    Apply filters
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-          <div class="dragArea row">
-            <div
-              class="col-lg-4 col-md-12 col-sm-12 form-group"
-              data-for="name"
-            >
-              <input
-                type="text"
-                name="name"
-                placeholder="Category"
-                data-form-field="name"
-                class="form-control"
-                value=""
-                id="name-form8-1d"
-              />
-            </div>
-            <div
-              class="col-lg-4 col-md-12 col-sm-12 form-group"
-              data-for="email"
-            >
-              <input
-                type="email"
-                name="email"
-                placeholder="Brand"
-                data-form-field="email"
-                class="form-control"
-                value=""
-                id="email-form8-1d"
-              />
-            </div>
-            <div
-              class="col-lg-4 col-md-12 col-sm-12 mbr-section-btn align-center"
-            >
-              <button type="submit" class="btn btn-primary display-4">
-                Apply filters
-              </button>
-            </div>
-          </div>
-        </form>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
