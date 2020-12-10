@@ -75,16 +75,20 @@ export class PanierViewComponent implements OnInit, OnDestroy {
   }
 
   updateItem(item, newQuantite) {
-    this.http.post("http://localhost:8888/panier/update", JSON.stringify({
-      nom: item.nom,
-      marque: item.marque,
-      quantite: item.quantite,
-      email: item.email,
-      newQuantite: newQuantite
-    }), httpOptions).subscribe((resultat) => {
-      console.log(resultat);
-      this.router.navigate(["/panier"]);
-    });
+    if (newQuantite === null || newQuantite === "" || parseInt(newQuantite) <= 0) {
+      this.deleteItem(item);
+    } else {
+      this.http.post("http://localhost:8888/panier/update", JSON.stringify({
+        nom: item.nom,
+        marque: item.marque,
+        quantite: item.quantite,
+        email: item.email,
+        newQuantite: newQuantite
+      }), httpOptions).subscribe((resultat) => {
+        console.log(resultat);
+        this.router.navigate(["/panier"]);
+      });
+    }
   }
 
   deleteBasket() {

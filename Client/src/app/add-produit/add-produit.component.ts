@@ -13,7 +13,7 @@ export class AddProduitComponent implements OnInit {
   public user: Observable<any>;
   public admin: Observable<any>;
   public file: File;
-  public infos = {"nom": "", "type": "", "prix": "", "marque": "", "description": ""};
+  public infos = {"nom": "", "type": "", "prix": "", "marque": "", "image": "", "description": ""};
 
   constructor(private authService: AuthentificationService, private ProdService: ProduitsService, private route: Router) {
     this.user = this.authService.getUser();
@@ -21,6 +21,12 @@ export class AddProduitComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  /*
+    if(false) {
+      this.route.navigate([""]);
+    }
+    console.log(this.admin);
+    */
   }
 
   /*  onFileSelected(event) {
@@ -29,7 +35,7 @@ export class AddProduitComponent implements OnInit {
     }*/
 
   onSubmit() {
-    if ((this.infos.nom !== "") && (this.infos.type !== "") && (this.infos.marque !== "") && (this.infos.prix !== "") && (this.infos.description !== ""))
+    if ((this.infos.nom !== "") && (this.infos.type !== "") && (this.infos.marque !== "") && (this.infos.prix !== "") && (this.infos.image !== "") && (this.infos.description !== ""))
       this.ProdService.addProduit(this.infos).subscribe(res => {
         console.log(res);
         this.route.navigate(['/produits']);
@@ -39,7 +45,8 @@ export class AddProduitComponent implements OnInit {
 
         //});
       });
-    else this.route.navigate(['/produits']);
+    else
+      this.route.navigate(['/produits']);
   }
 
 }
