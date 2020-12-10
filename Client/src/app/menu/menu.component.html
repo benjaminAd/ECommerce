@@ -13,9 +13,9 @@
           </a>
         </span>
         <span class="navbar-caption-wrap"
-          ><a class="navbar-caption text-primary display-5" routerLink=""
-            >Deare</a
-          ></span
+        ><a class="navbar-caption text-primary display-5" routerLink=""
+        >Deare</a
+        ></span
         >
       </div>
       <button
@@ -39,8 +39,8 @@
           <li class="nav-item">
             <a
               class="nav-link link text-black text-primary display-4"
-              routerLink="/produits"
-              >Browse all</a
+              routerLink="/produits/null/null/null/null/null"
+            >Browse all</a
             >
           </li>
           <li class="nav-item dropdown">
@@ -56,8 +56,8 @@
               <a
                 *ngFor="let cat of categories"
                 class="text-black dropdown-item text-primary display-4"
-                href="products.html"
-                >{{ cat }}</a
+                routerLink="/produits/null/{{cat}}/null/null/null"
+              >{{ cat }}</a
               >
             </div>
           </li>

@@ -14,8 +14,9 @@ export class ProduitsComponent implements OnInit {
   public user: Observable<any>
   public admin: Observable<boolean>;
   public produits: Object[];
+  public query = {};
 
-  constructor(private produitsService: ProduitsService, private authService: AuthentificationService, private router: Router) {
+  constructor(private produitsService: ProduitsService, private authService: AuthentificationService, private router: Router, private route: ActivatedRoute) {
     this.user = authService.getUser();
     this.admin = authService.getAdmin();
     // console.log('Dans le constructeur produits');
@@ -23,9 +24,17 @@ export class ProduitsComponent implements OnInit {
 
   ngOnInit() {
     // console.log('Dans ngOnInit() du composant produits');
-    this.produitsService.getProduits().subscribe(produits => {
-      this.produits = produits;
+    this.route.params.subscribe((params: Params) => {
+      console.log(params);
+      if (params.MinPrix === null) params.MinPrix = "null";
+      if (params.MaxPrix === null) params.MaxPrix = "null";
+      this.produitsService.getProduitFromResearch(params).subscribe(res => {
+        this.produits = res;
+      });
     });
+    /*this.produitsService.getProduits().subscribe(produits => {
+      this.produits = produits;
+    });*/
   }
 
   addToBasket(produit, quantite) {

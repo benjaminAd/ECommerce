@@ -93,7 +93,7 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
     app.post("/produit/research", (req, res) => {
         produits = [];
         try {
-            if ((req.body.nom === "") && (req.body.categorie === "") && (req.body.marque === "") && (req.body.MaxPrix === null) && (req.body.MinPrix === null)) {
+            if ((req.body.nom === "null") && (req.body.categorie === "null") && (req.body.marque === "null") && (req.body.MaxPrix === "null") && (req.body.MinPrix === "null")) {
                 console.log("vide");
                 db.collection("produits").find().toArray((err, documents) => {
                     if (err) throw err;
@@ -104,12 +104,12 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
                 });
             } else {
                 let query = {};
-                if (req.body.nom !== "") query.nom = req.body.nom;
-                if (req.body.categorie !== "") query.type = req.body.categorie;
-                if (req.body.marque !== "") query.marque = req.body.marque;
-                if (req.body.MinPrix !== null) query.prix = {$gt: req.body.MinPrix};
-                if (req.body.MaxPrix !== null) query.prix = {$lt: req.body.MaxPrix};
-                if ((req.body.MinPrix !== null) && (req.body.MaxPrix !== null)) query.prix = {
+                if (req.body.nom !== "null") query.nom = req.body.nom;
+                if (req.body.categorie !== "null") query.type = req.body.categorie;
+                if (req.body.marque !== "null") query.marque = req.body.marque;
+                if (req.body.MinPrix !== "null") query.prix = {$gt: req.body.MinPrix};
+                if (req.body.MaxPrix !== "null") query.prix = {$lt: req.body.MaxPrix};
+                if ((req.body.MinPrix !== "null") && (req.body.MaxPrix !== "null")) query.prix = {
                     $gt: req.body.MinPrix,
                     $lt: req.body.MaxPrix
                 };

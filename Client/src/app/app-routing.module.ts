@@ -14,7 +14,7 @@ import {RechercheComponent} from "./recherche/recherche.component";
 const routes: Routes = [
   {path: '', redirectTo: 'accueil', pathMatch: 'full'},
   {path: 'accueil', component: AccueilComponent},
-  {path: 'produits', component: ProduitsComponent},
+  {path: 'produits/:nom/:categorie/:marque/:MinPrix/:MaxPrix', component: ProduitsComponent},
   {path: 'categories', component: CategoriesComponent},
   {path: 'connexion', component: ConnexionComponent},
   {path: 'panier/achat/:nom/:prix/:marque/:quantite/:email', component: PanierComponent},
