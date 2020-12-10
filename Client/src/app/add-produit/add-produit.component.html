@@ -5,7 +5,8 @@
       <div class="col-lg-3 offset-lg-1 mbr-form">
         <form (ngSubmit)="onSubmit()" class="mbr-form form-with-styler">
           <div class="">
-            <div *ngIf="message">
+            <div *ngIf="message" id="alert-primary" data-form-alert-primary=""
+                 class="alert alert-primary display-4 col-12">
               {{message}}
             </div>
             <div *ngIf="error" id="alert-danger" data-form-alert-danger=""

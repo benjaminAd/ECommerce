@@ -55,7 +55,7 @@ export class PanierViewComponent implements OnInit, OnDestroy {
         this.message = null;
       this.prixTot = 0;
       for (let item of this.panier) {
-        let price = parseInt(item['prix']) * parseInt(item['quantite']);
+        let price = parseFloat(item['prix']) * parseInt(item['quantite']);
         this.prixTot += price;
       }
     });
@@ -82,6 +82,7 @@ export class PanierViewComponent implements OnInit, OnDestroy {
         marque: item.marque,
         quantite: item.quantite,
         email: item.email,
+        image: item.image,
         newQuantite: newQuantite
       }), httpOptions).subscribe((resultat) => {
         this.router.navigate(["/panier"]);

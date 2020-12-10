@@ -41,6 +41,7 @@ export class AuthentificationService {
 
   verificationConnexion(identifiants): Observable<any> {
     this.email = identifiants.email;
+    this.setAdmin(identifiants.admin);
     return this.http.post(this.baseUrl + 'membre/connexion', JSON.stringify(identifiants), httpOptions);
   }
 

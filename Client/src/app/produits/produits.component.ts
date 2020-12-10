@@ -57,7 +57,7 @@ export class ProduitsComponent implements OnInit/*, OnDestroy */{
 
   addToBasket(produit, quantite) {
     if (quantite === null || quantite === "" || parseInt(quantite) <= 0) quantite = 1;
-    this.router.navigate(["/panier/achat/" + produit.nom + "/" + produit.prix + "/" + produit.marque + "/" + quantite + "/" + this.authService.getEmail()]);
+    this.router.navigate(["/panier/achat/" + produit.nom + "/" + produit.prix + "/" + produit.marque + "/" + quantite + "/" + this.authService.getEmail() + "/" + produit.image.replaceAll('/', '\\')]);
   }
 
   deleteProduit(produit) {

@@ -22,7 +22,7 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always'*/
   },
   {path: 'connexion', component: ConnexionComponent},
-  {path: 'panier/achat/:nom/:prix/:marque/:quantite/:email', component: PanierComponent},
+  {path: 'panier/achat/:nom/:prix/:marque/:quantite/:email/:image', component: PanierComponent},
   {path: 'panier/remove', component: RemoveProduitComponent},
   {path: 'panier', component: PanierViewComponent, runGuardsAndResolvers: 'always'},
   {path: 'Inscription', component: InscriptionComponent},

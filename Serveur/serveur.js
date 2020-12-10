@@ -135,7 +135,7 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
         try {
             db.collection("membres").find({"email": req.body.email}).toArray((err, document) => {
                 if ((document !== undefined) && (document.length >= 1)) {
-                    res.end(JSON.stringify({"resultat": 0, "message": "Cet utilisateur existe déjà"}));
+                    res.end(JSON.stringify({"resultat": 0, "message": "This user already exists"}));
                 } else {
                     res.end(JSON.stringify({"resultat": 1, "message": "OK"}));
                 }
@@ -229,13 +229,15 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
                     nom: req.body.nom,
                     marque: req.body.marque,
                     quantite: req.body.quantite,
-                    email: req.body.email
+                    email: req.body.email,
+                    image: req.body.image
                 }, {
                     $set: {
                         nom: req.body.nom,
                         marque: req.body.marque,
                         quantite: req.body.newQuantite,
-                        email: req.body.email
+                        email: req.body.email,
+                        image: req.body.image
                     }
                 }, (err, obj) => {
                     if (err) throw err;

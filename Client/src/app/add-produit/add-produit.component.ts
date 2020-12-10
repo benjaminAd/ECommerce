@@ -24,12 +24,11 @@ export class AddProduitComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*
-      if(false) {
-        this.route.navigate([""]);
+    this.admin.subscribe(res => {
+      if(!res) {
+        this.route.navigate(["/404"]);
       }
-      console.log(this.admin);
-      */
+    });
   }
 
   /*  onFileSelected(event) {
@@ -42,7 +41,8 @@ export class AddProduitComponent implements OnInit {
       if (parseInt(this.infos.prix) > 0)
         this.ProdService.addProduit(this.infos).subscribe(res => {
           this.error = null;
-          this.message = "Le produit a bien été ajouter";
+          this.message = "The product has been added !";
+          this.infos = {"nom": "", "type": "", "prix": "", "marque": "", "image": "", "description": ""};
           //const uploadData = new FormData();
           //uploadData.append('myFile', this.file, this.file.name);
           //this.http.post("http://localhost:8888/uploadImage", {"image": uploadData}, httpOptions).subscribe(res => {
@@ -51,11 +51,11 @@ export class AddProduitComponent implements OnInit {
         });
       else {
         this.message = null;
-        this.error = "Le prix doit être supérieur ou égale à 0";
+        this.error = "The price must be greater than zero";
       }
     } else {
       this.message = null;
-      this.error = "Vous devez remplir tout les champs";
+      this.error = "You must fill all fields";
     }
   }
 

@@ -39,7 +39,7 @@ export class InscriptionComponent implements OnInit {
             }).subscribe((resultat) => {
               if (resultat['resultat']) {
                 this.authService.connect(this.utilisateur.email);
-                this.route.navigate(['/accueil']);
+                this.route.navigate([""]);
               } else {
                 this.message = (resultat['message']);
               }
