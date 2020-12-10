@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router, RouterModule, Routes} from "@angular/router";
+import {AccueilComponent} from "./accueil/accueil.component";
 import {ProduitsComponent} from "./produits/produits.component";
 import {CategoriesComponent} from "./categories/categories.component";
 import {ConnexionComponent} from "./connexion/connexion.component";
@@ -11,7 +12,8 @@ import {AddProduitComponent} from "./add-produit/add-produit.component";
 import {RechercheComponent} from "./recherche/recherche.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'produits', pathMatch: 'full'},
+  {path: '', redirectTo: 'accueil', pathMatch: 'full'},
+  {path: 'accueil', component: AccueilComponent},
   {path: 'produits', component: ProduitsComponent},
   {path: 'categories', component: CategoriesComponent},
   {path: 'connexion', component: ConnexionComponent},
