@@ -102,9 +102,8 @@
                   <p class="price mbr-fonts-style display-7">
                     ${{ produit["prix"] }}
                   </p>
-                  <div class="mbr-section-btn">
+                  <div *ngIf="(user|async) && !(admin|async)" class="mbr-section-btn">
                     <input
-                      *ngIf="user | async"
                       class="form-control"
                       style="width: 100px"
                       required
@@ -117,7 +116,6 @@
                       id="quantite{{ produit['nom'] }}"
                     />
                     <a
-                      *ngIf="user | async"
                       class="btn btn-primary display-4"
                       (click)="addToBasket(produit, quantite.value)"
                     >
