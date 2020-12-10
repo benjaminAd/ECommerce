@@ -10,7 +10,7 @@ import {AuthentificationService} from "../authentification.service";
   templateUrl: './produits.component.html',
   styleUrls: ['./produits.component.css']
 })
-export class ProduitsComponent implements OnInit, OnDestroy {
+export class ProduitsComponent implements OnInit/*, OnDestroy */{
   public user: Observable<any>
   public admin: Observable<boolean>;
   public produits: Object[];
@@ -21,25 +21,27 @@ export class ProduitsComponent implements OnInit, OnDestroy {
   constructor(private produitsService: ProduitsService, private authService: AuthentificationService, private router: Router, private route: ActivatedRoute) {
     this.user = authService.getUser();
     this.admin = authService.getAdmin();
-    this.subscription = this.router.events.subscribe((e: any) => {
+    /*this.subscription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
+        console.log("end");
         this.initialiseProduits();
       }
-    });
+    });*/
     // console.log('Dans le constructeur produits');
   }
 
   ngOnInit(): void {
-
+    this.initialiseProduits();
   }
 
-  ngOnDestroy(): void {
+ /* ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-  }
+  }*/
 
   initialiseProduits() {
+    this.produits = [];
     this.route.params.subscribe((params: Params) => {
       if (params.MinPrix === null) params.MinPrix = "null";
       if (params.MaxPrix === null) params.MaxPrix = "null";
@@ -60,7 +62,7 @@ export class ProduitsComponent implements OnInit, OnDestroy {
 
   deleteProduit(produit) {
     this.produitsService.deleteItem(produit).subscribe((res) => {
-      this.router.navigate(["/produits"]);
+      this.router.navigate(["/panier/remove"]);
     });
   }
 

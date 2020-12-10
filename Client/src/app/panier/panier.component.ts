@@ -23,9 +23,7 @@ export class PanierComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      console.log(params);
       this.http.post("http://localhost:8888/panier/ajout", JSON.stringify(params), httpOptions).subscribe((resultat: any) => {
-        console.log(resultat);
         this.router.navigate(["/produits"]);
       });
     });

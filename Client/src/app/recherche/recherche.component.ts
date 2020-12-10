@@ -33,7 +33,6 @@ export class RechercheComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.research);
     /*this.prodService.getProduitFromResearch(this.research).subscribe(res => {
       this.res = res;
     });*/

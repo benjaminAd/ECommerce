@@ -41,7 +41,7 @@ export class InscriptionComponent implements OnInit {
                 this.authService.connect(this.utilisateur.email);
                 this.route.navigate(['/accueil']);
               } else {
-                console.log(resultat['message']);
+                this.message = (resultat['message']);
               }
             });
           });

@@ -69,7 +69,6 @@ export class PanierViewComponent implements OnInit, OnDestroy {
       quantite: item.quantite,
       email: item.email
     }), httpOptions).subscribe((resultat) => {
-      console.log(resultat);
       this.router.navigate(["/panier"]);
     });
   }
@@ -85,7 +84,6 @@ export class PanierViewComponent implements OnInit, OnDestroy {
         email: item.email,
         newQuantite: newQuantite
       }), httpOptions).subscribe((resultat) => {
-        console.log(resultat);
         this.router.navigate(["/panier"]);
       });
     }
@@ -95,7 +93,6 @@ export class PanierViewComponent implements OnInit, OnDestroy {
     this.http.post("http://localhost:8888/panier/deleteBasket", JSON.stringify({
       email: this.user
     }), httpOptions).subscribe((resultat) => {
-      console.log(resultat);
       this.router.navigate(["/panier"]);
     });
   }
