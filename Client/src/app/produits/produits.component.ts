@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ProduitsService } from '../produits.service';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { AuthentificationService } from "../authentification.service";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ProduitsService} from '../produits.service';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {AuthentificationService} from "../authentification.service";
 
 @Component({
   selector: 'app-produits',
@@ -32,12 +32,14 @@ export class ProduitsComponent implements OnInit {
         this.produits = res;
         if (res.length === 0)
           this.message = "No products matches for your search.";
+        else this.message = null;
       });
     });
-}
+  }
 
   addToBasket(produit, quantite) {
     console.log("qty:" + quantite);
+    if (quantite === null || quantite === 0) quantite = 1;
     this.router.navigate(["/panier/achat/" + produit.nom + "/" + produit.prix + "/" + produit.marque + "/" + quantite + "/" + this.authService.getEmail()]);
   }
 

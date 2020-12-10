@@ -24,12 +24,13 @@ export class PanierViewComponent implements OnInit, OnDestroy {
   public panier: any;
   public prixTot = 0;
   subscription;
+  public message: string;
 
   constructor(private http: HttpClient, private authService: AuthentificationService, private router: Router) {
     this.user = this.authService.getEmail();
     this.utilisateur = this.authService.getUser();
     this.subscription = this.router.events.subscribe((e: any) => {
-      if(e instanceof NavigationEnd) {
+      if (e instanceof NavigationEnd) {
         this.initialisePanier();
       }
     });
@@ -40,7 +41,7 @@ export class PanierViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if(this.subscription) {
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
@@ -48,6 +49,9 @@ export class PanierViewComponent implements OnInit, OnDestroy {
   initialisePanier() {
     this.http.post("http://localhost:8888/panier", JSON.stringify({email: this.user}), httpOptions).subscribe((resultat: any) => {
       this.panier = resultat;
+      if (this.panier.length === 0) this.message = "Panier vide";
+      else this.message = null;
+      this.prixTot = 0;
       for (let item of this.panier) {
         let price = parseInt(item['prix']) * parseInt(item['quantite']);
         this.prixTot += price;
@@ -56,6 +60,7 @@ export class PanierViewComponent implements OnInit, OnDestroy {
   }
 
   deleteItem(item) {
+
     this.http.post("http://localhost:8888/panier/delete", JSON.stringify({
       nom: item.nom,
       marque: item.marque,
@@ -76,7 +81,7 @@ export class PanierViewComponent implements OnInit, OnDestroy {
       newQuantite: newQuantite
     }), httpOptions).subscribe((resultat) => {
       console.log(resultat);
-      window.location.reload();
+      this.router.navigate(["/panier"]);
     });
   }
 
@@ -85,6 +90,7 @@ export class PanierViewComponent implements OnInit, OnDestroy {
       email: this.user
     }), httpOptions).subscribe((resultat) => {
       console.log(resultat);
+      this.router.navigate(["/panier"]);
     });
   }
 
