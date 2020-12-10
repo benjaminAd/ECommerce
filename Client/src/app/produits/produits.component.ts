@@ -14,6 +14,7 @@ export class ProduitsComponent implements OnInit {
   public user: Observable<any>
   public admin: Observable<boolean>;
   public produits: Object[];
+  public message: string;
   public query = {};
 
   constructor(private produitsService: ProduitsService, private authService: AuthentificationService, private router: Router, private route: ActivatedRoute) {
@@ -31,6 +32,7 @@ export class ProduitsComponent implements OnInit {
       this.produitsService.getProduitFromResearch(params).subscribe(res => {
         console.log(res);
         this.produits = res;
+        if (res.length === 0) this.message = "Aucun Résultat ne correspond à vos critères!";
       });
     });
     /*this.produitsService.getProduits().subscribe(produits => {
