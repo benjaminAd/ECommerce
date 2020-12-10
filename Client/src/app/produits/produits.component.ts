@@ -26,30 +26,24 @@ export class ProduitsComponent implements OnInit {
   ngOnInit() {
     // console.log('Dans ngOnInit() du composant produits');
     this.route.params.subscribe((params: Params) => {
-      console.log(params);
       if (params.MinPrix === null) params.MinPrix = "null";
       if (params.MaxPrix === null) params.MaxPrix = "null";
       this.produitsService.getProduitFromResearch(params).subscribe(res => {
-        console.log(res);
         this.produits = res;
         if (res.length === 0)
           this.message = "No products matches for your search.";
       });
     });
-    /*this.produitsService.getProduits().subscribe(produits => {
-      this.produits = produits;
-    });*/
-  }
+}
 
   addToBasket(produit, quantite) {
-    this.router.navigate(["/panier/achat/" + produit.nom + "/" + produit.prix + "/" + produit.marque + "/" + quantite + "/" + this.authService.getEmail()])
+    console.log("qty:" + quantite);
+    this.router.navigate(["/panier/achat/" + produit.nom + "/" + produit.prix + "/" + produit.marque + "/" + quantite + "/" + this.authService.getEmail()]);
   }
 
   deleteProduit(produit) {
     this.produitsService.deleteItem(produit).subscribe((res) => {
-      if (res['resultat']) {
-        console.log(res['message']);
-      }
+      this.router.navigate([""]);
     });
   }
 

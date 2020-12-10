@@ -5,31 +5,24 @@
 <section *ngIf="message" class="header13 cid-siMreY5J4d" id="header13-1s">
   <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(255, 255, 255);"></div>
   <div class="align-center container">
-      <div class="row justify-content-center">
-          <div class="col-12 col-lg-10">
-              <p class="mbr-text mbr-fonts-style mb-3 display-7"><strong>
-                  {{message}}</strong></p>
-          </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10">
+        <p class="mbr-text mbr-fonts-style mb-3 display-7"><strong>
+            {{message}}</strong></p>
       </div>
+    </div>
   </div>
 </section>
 
 <!-- Products list -->
-<section
-  class="features8 cid-sitFsOtzTR"
-  xmlns="http://www.w3.org/1999/html"
-  id="features9-16"
->
+<section class="features8 cid-sitFsOtzTR" xmlns="http://www.w3.org/1999/html" id="features9-16">
   <div class="container">
     <div *ngFor="let produit of produits" class="card">
       <div class="card-wrapper">
         <div class="row align-items-center">
           <div class="col-12 col-md-3">
             <div class="image-wrapper">
-              <img
-                src="assets/images/{{ produit['nom'] }}.jpg"
-                alt="{{ produit['nom'] }}"
-              />
+              <img src="assets/images/{{ produit['nom'] }}.jpg" alt="{{ produit['nom'] }}" />
             </div>
           </div>
           <div class="col-12 col-md">
@@ -51,33 +44,16 @@
                   <p class="price mbr-fonts-style display-7">
                     ${{ produit["prix"] }}
                   </p>
-                  <div *ngIf="(user|async) && !(admin|async)" class="mbr-section-btn">
-                    <input
-                      class="form-control"
-                      style="width: 100px"
-                      required
-                      min="1"
-                      max="9999"
-                      placeholder="1"
-                      type="number"
-                      name="quantite"
-                      #quantite
-                      id="quantite{{ produit['nom'] }}"
-                    />
-                    <a
-                      class="btn btn-primary display-4"
-                      (click)="addToBasket(produit, quantite.value)"
-                    >
-                      Add to cart
+                  <div *ngIf="(user|async)" class="mbr-section-btn">
+                    <input class="btn form-control" style="width: 100px;" required min="1" max="9999" placeholder="1" value=1
+                      type="number" name="quantite" #quantite id="quantite{{ produit['nom'] }}" />
+                    <a class="btn btn-primary display-4" (click)="addToBasket(produit, quantite.value)">
+                      <span style="margin: 0"
+                        class="mobi-mbri mobi-mbri-cart-add mbr-iconfont mbr-iconfont-btn"></span>
                     </a>
-                    <a
-                      *ngIf="(user | async) && (admin | async)"
-                      (click)="deleteProduit(produit)"
-                      class="btn btn-secondary display-4"
-                    ><span
-                      class="mobi-mbri mobi-mbri-trash mbr-iconfont mbr-iconfont-btn"
-                    ></span
-                    ></a>
+                    <a *ngIf="(admin | async)" (click)="deleteProduit(produit)"
+                      class="btn btn-secondary display-4"><span style="margin: 0"
+                        class="mobi-mbri mobi-mbri-trash mbr-iconfont mbr-iconfont-btn"></span></a>
                   </div>
                 </div>
                 <div></div>
