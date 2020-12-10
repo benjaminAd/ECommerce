@@ -11,16 +11,22 @@ import {ProduitsService} from "../produits.service";
 export class MenuComponent implements OnInit {
   public user: Observable<any>;
   public admin: Observable<any>;
+  public email: string;
   public categories: any;
 
   constructor(public AuthService: AuthentificationService, private prodService: ProduitsService) {
-    this.user = AuthService.getUser();
-    this.admin = AuthService.getAdmin();
+    this.user = this.AuthService.getUser();
+    this.admin = this.AuthService.getAdmin();
   }
 
   ngOnInit(): void {
     this.prodService.getCategories().subscribe(res => {
       this.categories = res;
+    });
+    this.user.subscribe(res => {
+      console.log("res = " + res);
+      this.email = res;
+      console.log("email = " + this.email);
     });
   }
 

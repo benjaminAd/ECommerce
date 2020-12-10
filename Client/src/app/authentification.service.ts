@@ -44,7 +44,7 @@ export class AuthentificationService {
     return this.http.post(this.baseUrl + 'membre/connexion', JSON.stringify(identifiants), httpOptions);
   }
 
-  getEmail(): String {
+  getEmail(): string {
     return this.email;
   }
 
