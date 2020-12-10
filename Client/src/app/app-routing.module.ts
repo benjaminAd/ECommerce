@@ -10,6 +10,7 @@ import {PanierViewComponent} from "./panier-view/panier-view.component";
 import {InscriptionComponent} from "./inscription/inscription.component";
 import {AddProduitComponent} from "./add-produit/add-produit.component";
 import {RechercheComponent} from "./recherche/recherche.component";
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'accueil', pathMatch: 'full'},
@@ -21,7 +22,9 @@ const routes: Routes = [
   {path: 'panier', component: PanierViewComponent},
   {path: 'Inscription', component: InscriptionComponent},
   {path: 'addProduct', component: AddProduitComponent},
-  {path: 'rechercher', component: RechercheComponent}
+  {path: 'rechercher', component: RechercheComponent},
+  {path: '404', component: NotFoundComponent},
+  {path: '**', redirectTo: '404'}
 ]
 
 @NgModule({
