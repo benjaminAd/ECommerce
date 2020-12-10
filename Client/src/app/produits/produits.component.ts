@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
-import {ProduitsService} from '../produits.service';
-import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {AuthentificationService} from "../authentification.service";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ProduitsService } from '../produits.service';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { AuthentificationService } from "../authentification.service";
 
 @Component({
   selector: 'app-produits',
@@ -32,7 +32,8 @@ export class ProduitsComponent implements OnInit {
       this.produitsService.getProduitFromResearch(params).subscribe(res => {
         console.log(res);
         this.produits = res;
-        if (res.length === 0) this.message = "Aucun Résultat ne correspond à vos critères!";
+        if (res.length === 0)
+          this.message = "No products matches for your search.";
       });
     });
     /*this.produitsService.getProduits().subscribe(produits => {
