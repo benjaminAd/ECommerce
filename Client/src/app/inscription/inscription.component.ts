@@ -24,24 +24,23 @@ export class InscriptionComponent implements OnInit {
   onSubmit() {
     this.insService.verifExist(this.utilisateur.email).subscribe((resultat) => {
       if (resultat['resultat'] === 1) {
-        //if(this.utilisateur.password === this.utilisateur.confirmPassword){
+        if(this.utilisateur.password === this.utilisateur.confirmPassword){
         if (this.utilisateur.email.includes("@deare.com")) this.utilisateur.admin = true;
         //this.utilisateur.password = sha256(this.utilisateur.password);
         this.insService.inscription(this.utilisateur).subscribe((resultat) => {
           this.authService.verificationConnexion(this.utilisateur).subscribe((resultat) => {
             if (resultat['resultat']) {
               this.authService.connect(this.utilisateur.email);
-              this.route.navigate(['/categories']);
+              this.route.navigate(['/accueil']);
             } else {
               console.log(resultat['message']);
             }
           });
         });
-        //}else{
-        // this.message="Les mots de passes ne sont pas identiques!";
-        // }
+        }else{
+          this.message="Passwords are not the same";
+        }
       } else if (resultat['resultat'] === 0) {
-        console.log("resultat0 = " + resultat['message']);
         //this.message.next(resultat['message']);
         this.message = resultat['message'];
       }

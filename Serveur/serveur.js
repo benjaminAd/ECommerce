@@ -167,10 +167,10 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
                             "admin": documents[0].admin
                         }));
                     } else
-                        res.end(JSON.stringify({"resultat": 0, "message": "Email et/ou mot de passe incorrect"}));
+                        res.end(JSON.stringify({"resultat": 0, "message": "Incorrect email or password"}));
                 });
         } catch (e) {
-            res.end(JSON.stringify({"resultat": 0, "message": e}));
+            res.end(JSON.stringify({"resultat": 0, "message": "Incorrect email or password"}));
         }
     });
 

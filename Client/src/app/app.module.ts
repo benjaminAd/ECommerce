@@ -14,6 +14,8 @@ import { PanierViewComponent } from './panier-view/panier-view.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AddProduitComponent } from './add-produit/add-produit.component';
 import { RechercheComponent } from './recherche/recherche.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { RechercheComponent } from './recherche/recherche.component';
     PanierViewComponent,
     InscriptionComponent,
     AddProduitComponent,
-    RechercheComponent
+    RechercheComponent,
+    AccueilComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
