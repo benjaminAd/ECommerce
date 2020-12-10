@@ -120,7 +120,7 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
                 });
             } else {
                 let query = {};
-                if (req.body.nom !== "null") query.nom = req.body.nom;
+                if (req.body.nom !== "null") query.nom = {$regex: new RegExp(".*" + req.body.nom + ".*", 'i')};
                 if (req.body.categorie !== "null") query.type = req.body.categorie;
                 if (req.body.marque !== "null") query.marque = req.body.marque;
                 if (req.body.MinPrix !== "null") query.prix = {$gt: parseInt(req.body.MinPrix)};
