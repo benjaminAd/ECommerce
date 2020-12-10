@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AuthentificationService} from "../authentification.service";
 import {Observable} from "rxjs";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Params, Router} from "@angular/router";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,21 +18,35 @@ const httpOptions = {
   templateUrl: './panier-view.component.html',
   styleUrls: ['./panier-view.component.css']
 })
-export class PanierViewComponent implements OnInit {
+export class PanierViewComponent implements OnInit, OnDestroy {
   user: String;
   public utilisateur: any;
   public panier: any;
   public prixTot = 0;
+  subscription;
 
   constructor(private http: HttpClient, private authService: AuthentificationService, private router: Router) {
     this.user = this.authService.getEmail();
     this.utilisateur = this.authService.getUser();
+    this.subscription = this.router.events.subscribe((e: any) => {
+      if(e instanceof NavigationEnd) {
+        this.initialisePanier();
+      }
+    });
   }
 
   ngOnInit(): void {
-    console.log(this.user);
+    // this.initialisePanier();
+  }
+
+  ngOnDestroy(): void {
+    if(this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  initialisePanier() {
     this.http.post("http://localhost:8888/panier", JSON.stringify({email: this.user}), httpOptions).subscribe((resultat: any) => {
-      console.log("resultat = " + resultat);
       this.panier = resultat;
       for (let item of this.panier) {
         let price = parseInt(item['prix']) * parseInt(item['quantite']);
@@ -49,7 +63,7 @@ export class PanierViewComponent implements OnInit {
       email: item.email
     }), httpOptions).subscribe((resultat) => {
       console.log(resultat);
-      window.location.reload();
+      this.router.navigate(["/panier"]);
     });
   }
 
@@ -71,7 +85,6 @@ export class PanierViewComponent implements OnInit {
       email: this.user
     }), httpOptions).subscribe((resultat) => {
       console.log(resultat);
-      window.location.reload();
     });
   }
 

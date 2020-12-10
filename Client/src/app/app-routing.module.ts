@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'categories', component: CategoriesComponent},
   {path: 'connexion', component: ConnexionComponent},
   {path: 'panier/achat/:nom/:prix/:marque/:quantite/:email', component: PanierComponent},
-  {path: 'panier', component: PanierViewComponent},
+  {path: 'panier', component: PanierViewComponent, runGuardsAndResolvers: 'always'},
   {path: 'Inscription', component: InscriptionComponent},
   {path: 'addProduct', component: AddProduitComponent},
   {path: 'rechercher', component: RechercheComponent},
@@ -31,7 +31,7 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
   ],
   exports: [RouterModule]
 })

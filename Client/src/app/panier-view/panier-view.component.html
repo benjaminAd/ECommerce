@@ -42,10 +42,11 @@
                   </p>
                   <div class="mbr-section-btn">
                     <input class="btn form-control" style="width: 100px" required min="1" max="9999" placeholder="1"
-                      value="1" type="number" name="quantite" #quantite id="quantite{{ produit['nom'] }}" />
-                    <a class="btn btn-primary display-4" (click)="updateItem(produit, quantite.value)"><span style="margin: 0"
-                        class="mobi-mbri mobi-mbri-edit-2 mbr-iconfont mbr-iconfont-btn"></span></a>
-                    <a class="btn btn-secondary display-4" (click)="deleteItem(produit)"><span
+                      value="{{produit['quantite']}}" type="number" name="quantite" #quantite
+                      id="quantite{{ produit['nom'] }}" />
+                    <a class="btn btn-primary display-4" (click)="updateItem(produit, quantite.value)"><span
+                        style="margin: 0" class="mobi-mbri mobi-mbri-edit-2 mbr-iconfont mbr-iconfont-btn"></span></a>
+                    <a class="btn btn-secondary display-4" (click)="deleteItem(produit)"><span style="margin: 0"
                         class="mobi-mbri mobi-mbri-trash mbr-iconfont mbr-iconfont-btn"></span></a>
                   </div>
                 </div>
