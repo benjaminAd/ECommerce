@@ -170,7 +170,7 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
                         res.end(JSON.stringify({"resultat": 0, "message": "Email et/ou mot de passe incorrect"}));
                 });
         } catch (e) {
-            res.end(JSON.stringify({"resultat": 0, "message": e}));
+            res.end(JSON.stringify({"resultat": 0, "message": "Email et/ou mot de passe incorrect"}));
         }
     });
 
