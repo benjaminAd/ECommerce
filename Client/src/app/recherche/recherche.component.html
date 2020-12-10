@@ -84,6 +84,36 @@
 
                 <div
                   class="col-lg-4 col-md-12 col-sm-12 form-group"
+                  data-for="defaultCat"
+                >
+                  <select
+                    id="defaultCat"
+                    name="categorie"
+                    class="form-control"
+                    [(ngModel)]="research['categorie']"
+                  >
+                    <option value="null">- Choose a category -</option>
+                    <option value="Smartphone">Smartphone</option>
+                  </select>
+                </div>
+
+                <div
+                  class="col-lg-4 col-md-12 col-sm-12 form-group"
+                  data-for="defautMarque"
+                >
+                  <select
+                    id="defautMarque"
+                    name="marque"
+                    class="form-control"
+                    [(ngModel)]="research['marque']"
+                  >
+                    <option value="null">- Choose a category -</option>
+                    <option value="Apple">Apple</option>
+                  </select>
+                </div>
+
+                <div
+                  class="col-lg-4 col-md-12 col-sm-12 form-group"
                   data-for="prixmin"
                 >
                   <input
