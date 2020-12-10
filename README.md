@@ -1,4 +1,4 @@
-# ECommerce
+# Projet DEARE
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
