@@ -57,7 +57,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
 
     /* Liste des catégories de produits */
     app.get("/categories", (req, res) => {
-        console.log("/categories");
         categories = [];
         try {
             db.collection("produits").find().toArray((err, documents) => {
@@ -74,7 +73,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
 
     /*Liste des marques*/
     app.get("/marques", (req, res) => {
-        console.log("/categories");
         marques = [];
         try {
             db.collection("produits").find().toArray((err, documents) => {
@@ -165,7 +163,6 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
             db.collection("membres").insertOne(req.body);
             res.end(JSON.stringify({"resultat": 1, "message": "inscription réussie"}));
         } catch (e) {
-            console.log(e);
             res.end(JSON.stringify({"resultat": 0, "message": e}));
         }
     });
