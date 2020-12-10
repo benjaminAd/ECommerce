@@ -32,7 +32,7 @@
         <div class="row align-items-center">
           <div class="col-12 col-md-3">
             <div class="image-wrapper">
-              <img src="assets/images/{{ produit['nom'] }}.jpg" alt="{{ produit['nom'] }}"/>
+              <img src="{{ produit['image'] }}" alt="{{ produit['nom'] }}" />
             </div>
           </div>
           <div class="col-12 col-md">
@@ -55,12 +55,12 @@
                   </p>
                   <div class="mbr-section-btn">
                     <input class="btn form-control" style="width: 100px" required min="1" max="9999" placeholder="1"
-                           value="{{produit['quantite']}}" type="number" name="quantite" #quantite
-                           id="quantite{{ produit['nom'] }}"/>
+                      value="{{produit['quantite']}}" type="number" name="quantite" #quantite
+                      id="quantite{{ produit['nom'] }}" />
                     <a class="btn btn-primary display-4" (click)="updateItem(produit, quantite.value)"><span
-                      style="margin: 0" class="mobi-mbri mobi-mbri-edit-2 mbr-iconfont mbr-iconfont-btn"></span></a>
+                        style="margin: 0" class="mobi-mbri mobi-mbri-edit-2 mbr-iconfont mbr-iconfont-btn"></span></a>
                     <a class="btn btn-secondary display-4" (click)="deleteItem(produit)"><span style="margin: 0"
-                                                                                               class="mobi-mbri mobi-mbri-trash mbr-iconfont mbr-iconfont-btn"></span></a>
+                        class="mobi-mbri mobi-mbri-trash mbr-iconfont mbr-iconfont-btn"></span></a>
                   </div>
                 </div>
                 <div></div>
@@ -78,11 +78,11 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-12 col-lg-12">
-        <hr class="line"/>
+        <hr class="line" />
         <p class="mbr-text align-center mbr-fonts-style my-4 display-7">
           <strong>Total : </strong><span style="color: #2299aa">${{ prixTot }}</span>
         </p>
-        <hr class="line"/>
+        <hr class="line" />
       </div>
     </div>
   </div>
