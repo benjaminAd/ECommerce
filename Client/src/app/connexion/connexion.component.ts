@@ -22,7 +22,7 @@ export class ConnexionComponent {
       if (response['resultat']) {
         this.authService.connect(this.utilisateur.email);
         this.authService.setAdmin(response['admin']);
-        this.route.navigate(['/produits/null/null/null/null/null']);
+        this.route.navigate(['']);
       }
       /*setTimeout(() => {
         this.route.navigate(['/categories']);
