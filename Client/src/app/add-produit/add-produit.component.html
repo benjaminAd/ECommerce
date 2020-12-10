@@ -1,17 +1,120 @@
-<div *ngIf="(user|async) && (admin|async)">
-  <form (ngSubmit)="onSubmit()">
-    <label for="nom">Nom du Produit</label>
-    <input type="text" name="nom" id="nom" [(ngModel)]="infos['nom']"/><br/>
-    <label for="type">Type de Produit</label>
-    <input type="text" name="type" id="type" [(ngModel)]="infos['type']"/><br/>
-    <label for="prix">Prix du produit</label>
-    <input type="number" name="prix" id="prix" [(ngModel)]="infos['prix']"/><br/>
-    <label for="marque">Marque du produit</label>
-    <input type="text" name="marque" id="marque" [(ngModel)]="infos['marque']"/><br/>
-    <label for="description">Description</label>
-    <textarea name="description" id="description" cols="30" rows="10"
-              [(ngModel)]="infos['description']"></textarea><br/>
-    <!--<input type="file" (change)="onFileSelected($event)"/><br/>-->
-    <input type="submit" value="Ajouter"/>
-  </form>
-</div>
+<!-- New product form -->
+<section
+  *ngIf="(user | async) && (admin | async)"
+  class="form4 cid-siL047hEYC mbr-fullscreen"
+  id="form4-1k"
+>
+  <div class="container">
+    <div class="row content-wrapper justify-content-center">
+      <div class="col-lg-3 offset-lg-1 mbr-form">
+        <form (ngSubmit)="onSubmit()" class="mbr-form form-with-styler">
+          <div class="">
+            <div
+              hidden="hidden"
+              data-form-alert-danger=""
+              class="alert alert-danger col-12"
+            >
+              Oops...! some problem!
+            </div>
+          </div>
+          <div class="dragArea row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <h1 class="mbr-section-title mb-4 display-2">
+                <strong>Add a new product</strong>
+              </h1>
+            </div>
+            <div class="col-lg-12 col-md col-12 form-group" data-for="nom">
+              <input
+                required
+                type="text"
+                name="nom"
+                placeholder="Product name"
+                data-form-field="nom"
+                class="form-control"
+                value=""
+                id="nom"
+                [(ngModel)]="infos['nom']"
+              />
+            </div>
+
+            <div class="col-lg-12 col-md col-12 form-group" data-for="type">
+              <input
+                required
+                type="text"
+                name="type"
+                placeholder="Category"
+                data-form-field="type"
+                class="form-control"
+                value=""
+                id="type"
+                [(ngModel)]="infos['type']"
+              />
+            </div>
+
+            <div class="col-lg-12 col-md col-12 form-group" data-for="marque">
+              <input
+                required
+                type="text"
+                name="marque"
+                placeholder="Brand"
+                data-form-field="marque"
+                class="form-control"
+                value=""
+                id="marque"
+                [(ngModel)]="infos['marque']"
+              />
+            </div>
+
+            <div class="col-lg-12 col-md col-12 form-group" data-for="prix">
+              <input
+                required
+                type="number"
+                min="0"
+                name="prix"
+                placeholder="Price"
+                data-form-field="prix"
+                class="form-control"
+                value=""
+                id="prix"
+                [(ngModel)]="infos['prix']"
+              />
+            </div>
+
+            <div
+              class="col-lg-12 col-md col-12 form-group"
+              data-for="description"
+            >
+              <textarea
+                required
+                cols="30"
+                rows="10"
+                name="description"
+                placeholder="Description"
+                data-form-field="description"
+                class="form-control"
+                value=""
+                id="description"
+                [(ngModel)]="infos['description']"
+              ></textarea>
+            </div>
+
+            <div class="col-12 col-md-auto mbr-section-btn">
+              <button type="submit" class="btn btn-primary display-4">
+                Add product
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-7 offset-lg-1 col-12">
+        <div class="image-wrapper">
+          <img
+            class="w-100"
+            src="assets/images/undraw-add-to-cart-vkjp.svg"
+            alt="Woman adding product"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
