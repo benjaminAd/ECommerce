@@ -14,7 +14,7 @@ export class RechercheComponent implements OnInit {
   public admin: Observable<any>;
   public categories: any;
   public marques: any;
-  public research = {"nom": "", "categorie": "", "marque": "", "MinPrix": "", "MaxPrix": ""};
+  public research = {"nom": "null", "categorie": "null", "marque": "null", "MinPrix": "null", "MaxPrix": "null"};
   public res: any;
 
   constructor(private prodService: ProduitsService, private authService: AuthentificationService, private router: Router) {
@@ -33,15 +33,15 @@ export class RechercheComponent implements OnInit {
 
   onSubmit() {
     console.log(this.research);
-    if (this.research.MinPrix === "") this.research.MinPrix = null;
-    if (this.research.MaxPrix === "") this.research.MaxPrix = null;
-    this.prodService.getProduitFromResearch(this.research).subscribe(res => {
+    /*this.prodService.getProduitFromResearch(this.research).subscribe(res => {
       this.res = res;
-    });
+    });*/
+    this.router.navigate(['/produits/' + this.research.nom + "/" + this.research.categorie + "/" + this.research.marque + "/" + this.research.MinPrix + "/" + this.research.MaxPrix]);
   }
 
   addToBasket(produit, quantite) {
     this.router.navigate(["/panier/achat/" + produit.nom + "/" + produit.prix + "/" + produit.marque + "/" + quantite + "/" + this.authService.getEmail()])
   }
+
 
 }
