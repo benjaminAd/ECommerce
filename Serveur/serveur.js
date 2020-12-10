@@ -165,6 +165,7 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
             db.collection("membres").insertOne(req.body);
             res.end(JSON.stringify({"resultat": 1, "message": "inscription réussie"}));
         } catch (e) {
+            console.log(e);
             res.end(JSON.stringify({"resultat": 0, "message": e}));
         }
     });
