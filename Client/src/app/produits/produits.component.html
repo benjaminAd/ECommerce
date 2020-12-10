@@ -38,8 +38,9 @@
                   <p class="price mbr-fonts-style display-7">
                     ${{ produit["prix"] }}
                   </p>
-                  <div *ngIf="(user|async) && !(admin|async)" class="mbr-section-btn">
+                  <div class="mbr-section-btn">
                     <input
+                      *ngIf="user | async"
                       class="form-control"
                       style="width: 100px"
                       required
@@ -52,14 +53,20 @@
                       id="quantite{{ produit['nom'] }}"
                     />
                     <a
+                      *ngIf="user | async"
                       class="btn btn-primary display-4"
                       (click)="addToBasket(produit, quantite.value)"
                     >
                       Add to cart
                     </a>
-                  </div>
-                  <div *ngIf="(user|async) && (admin|async)" class="mbr-section-btn">
-                    <a (click)="deleteProduit(produit)" class="btn btn-primary display-4">Delete Product</a>
+                    <a
+                      *ngIf="(user | async) && (admin | async)"
+                      (click)="deleteProduit(produit)"
+                      class="btn btn-secondary display-4"
+                      ><span
+                        class="mobi-mbri mobi-mbri-trash mbr-iconfont mbr-iconfont-btn"
+                      ></span
+                    ></a>
                   </div>
                 </div>
                 <div></div>

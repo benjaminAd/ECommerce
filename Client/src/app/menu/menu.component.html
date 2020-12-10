@@ -100,11 +100,11 @@
           </a>
           <a
             *ngIf="(user|async)"
-            class="btn btn-primary display-4"
+            class="btn btn-secondary display-4"
             (click)="AuthService.disconnect()"
           >
             <span
-              class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"
+              class="mobi-mbri mobi-mbri-error mbr-iconfont mbr-iconfont-btn"
             >
             </span>
             {{ user|async }}
