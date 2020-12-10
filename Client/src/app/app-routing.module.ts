@@ -15,7 +15,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 const routes: Routes = [
   {path: '', redirectTo: 'accueil', pathMatch: 'full'},
   {path: 'accueil', component: AccueilComponent},
-  {path: 'produits/:nom/:categorie/:marque/:MinPrix/:MaxPrix', component: ProduitsComponent},
+  {path: 'produits', redirectTo: 'produits/null/null/null/null/null', pathMatch: 'full'},
+  {path: 'produits/:nom/:categorie/:marque/:MinPrix/:MaxPrix', component: ProduitsComponent, runGuardsAndResolvers: 'always'},
   {path: 'categories', component: CategoriesComponent},
   {path: 'connexion', component: ConnexionComponent},
   {path: 'panier/achat/:nom/:prix/:marque/:quantite/:email', component: PanierComponent},

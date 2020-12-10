@@ -32,14 +32,14 @@ export class AddProduitComponent implements OnInit {
     if ((this.infos.nom !== "") && (this.infos.type !== "") && (this.infos.marque !== "") && (this.infos.prix !== "") && (this.infos.description !== ""))
       this.ProdService.addProduit(this.infos).subscribe(res => {
         console.log(res);
-        this.route.navigate(['/produits/null/null/null/null/null']);
+        this.route.navigate(['/produits']);
         //const uploadData = new FormData();
         //uploadData.append('myFile', this.file, this.file.name);
         //this.http.post("http://localhost:8888/uploadImage", {"image": uploadData}, httpOptions).subscribe(res => {
 
         //});
       });
-    else this.route.navigate(['/produits/null/null/null/null/null']);
+    else this.route.navigate(['/produits']);
   }
 
 }

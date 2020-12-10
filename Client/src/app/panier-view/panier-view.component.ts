@@ -49,8 +49,10 @@ export class PanierViewComponent implements OnInit, OnDestroy {
   initialisePanier() {
     this.http.post("http://localhost:8888/panier", JSON.stringify({email: this.user}), httpOptions).subscribe((resultat: any) => {
       this.panier = resultat;
-      if (this.panier.length === 0) this.message = "Panier vide";
-      else this.message = null;
+      if (this.panier.length === 0)
+        this.message = "There are no products in your cart.";
+      else
+        this.message = null;
       this.prixTot = 0;
       for (let item of this.panier) {
         let price = parseInt(item['prix']) * parseInt(item['quantite']);
