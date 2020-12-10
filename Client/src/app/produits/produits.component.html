@@ -8,6 +8,7 @@
   id="features9-16"
 >
   <div class="container">
+    <p *ngIf="message">{{message}}</p>
     <div *ngFor="let produit of produits" class="card">
       <div class="card-wrapper">
         <div class="row align-items-center">
@@ -38,9 +39,8 @@
                   <p class="price mbr-fonts-style display-7">
                     ${{ produit["prix"] }}
                   </p>
-                  <div class="mbr-section-btn">
+                  <div *ngIf="(user|async) && !(admin|async)" class="mbr-section-btn">
                     <input
-                      *ngIf="user | async"
                       class="form-control"
                       style="width: 100px"
                       required
@@ -53,7 +53,6 @@
                       id="quantite{{ produit['nom'] }}"
                     />
                     <a
-                      *ngIf="user | async"
                       class="btn btn-primary display-4"
                       (click)="addToBasket(produit, quantite.value)"
                     >
@@ -63,9 +62,9 @@
                       *ngIf="(user | async) && (admin | async)"
                       (click)="deleteProduit(produit)"
                       class="btn btn-secondary display-4"
-                      ><span
-                        class="mobi-mbri mobi-mbri-trash mbr-iconfont mbr-iconfont-btn"
-                      ></span
+                    ><span
+                      class="mobi-mbri mobi-mbri-trash mbr-iconfont mbr-iconfont-btn"
+                    ></span
                     ></a>
                   </div>
                 </div>

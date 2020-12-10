@@ -25,10 +25,18 @@ export class InscriptionComponent implements OnInit {
     this.insService.verifExist(this.utilisateur.email).subscribe((resultat) => {
       if (resultat['resultat'] === 1) {
         if (this.utilisateur.password === this.utilisateur.confirmPassword) {
-          if (this.utilisateur.email.includes("@deare.com"))
-            this.utilisateur.admin = true;
-          this.insService.inscription(this.utilisateur).subscribe((resultat) => {
-            this.authService.verificationConnexion(this.utilisateur).subscribe((resultat) => {
+          if (this.utilisateur.email.includes("@deare.com")) this.utilisateur.admin = true;
+          //this.utilisateur.password = sha256(this.utilisateur.password);
+          this.insService.inscription({
+            email: this.utilisateur.email,
+            password: this.utilisateur.password,
+            admin: this.utilisateur.admin
+          }).subscribe((resultat) => {
+            this.authService.verificationConnexion({
+              email: this.utilisateur.email,
+              password: this.utilisateur.password,
+              admin: this.utilisateur.admin
+            }).subscribe((resultat) => {
               if (resultat['resultat']) {
                 this.authService.connect(this.utilisateur.email);
                 this.route.navigate(['/accueil']);

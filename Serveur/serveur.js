@@ -111,7 +111,7 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
         try {
             if ((req.body.nom === "null") && (req.body.categorie === "null") && (req.body.marque === "null") && (req.body.MaxPrix === "null") && (req.body.MinPrix === "null")) {
                 console.log("vide");
-                db.collection("produits").find().toArray((err, documents) => {
+                db.collection("produits").find().sort({nom: 1}).toArray((err, documents) => {
                     if (err) throw err;
                     for (let doc of documents) {
                         produits.push(doc);
@@ -120,7 +120,7 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
                 });
             } else {
                 let query = {};
-                if (req.body.nom !== "null") query.nom = req.body.nom;
+                if (req.body.nom !== "null") query.nom = {$regex: new RegExp(".*" + req.body.nom + ".*", 'i')};
                 if (req.body.categorie !== "null") query.type = req.body.categorie;
                 if (req.body.marque !== "null") query.marque = req.body.marque;
                 if (req.body.MinPrix !== "null") query.prix = {$gt: parseInt(req.body.MinPrix)};
@@ -130,7 +130,7 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
                     $lt: parseInt(req.body.MaxPrix)
                 };
                 console.log(query);
-                db.collection("produits").find(query).toArray((err, documents) => {
+                db.collection("produits").find(query).sort({nom: 1}).toArray((err, documents) => {
                     for (let doc of documents) {
                         produits.push(doc);
                     }
