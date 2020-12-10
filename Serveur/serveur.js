@@ -89,6 +89,22 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
         }
     });
 
+    /*delete item*/
+    app.post('/produits/delete', (req, res) => {
+        try {
+            console.log(req.body);
+            db.collection("produits").deleteOne({
+                nom: req.body.nom,
+                type: req.body.type,
+                prix: req.body.prix,
+                marque: req.body.marque
+            });
+            res.end(JSON.stringify({"resultat": 1, "message": "Effacé"}));
+        } catch (e) {
+            res.end(JSON.stringify({"resultat": 0, "message": e}));
+        }
+    });
+
     /*Recherche produit*/
     app.post("/produit/research", (req, res) => {
         produits = [];

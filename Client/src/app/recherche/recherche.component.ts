@@ -29,6 +29,7 @@ export class RechercheComponent implements OnInit {
     this.prodService.getMarques().subscribe(res => {
       this.marques = res;
     });
+
   }
 
   onSubmit() {
@@ -42,6 +43,11 @@ export class RechercheComponent implements OnInit {
     if (this.research.MinPrix === "") this.research.MinPrix = "null";
     if (this.research.MaxPrix === "") this.research.MaxPrix = "null";
     this.router.navigate(['/produits/' + this.research.nom + "/" + this.research.categorie + "/" + this.research.marque + "/" + this.research.MinPrix + "/" + this.research.MaxPrix]);
+    if (this.research.nom === "null") this.research.nom = "";
+    if (this.research.categorie === "null") this.research.categorie = "";
+    if (this.research.marque === "null") this.research.marque = "";
+    if (this.research.MinPrix === "null") this.research.MinPrix = "";
+    if (this.research.MaxPrix === "null") this.research.MaxPrix = "";
   }
 
   addToBasket(produit, quantite) {

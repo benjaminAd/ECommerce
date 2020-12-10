@@ -58,6 +58,9 @@
                       Add to cart
                     </a>
                   </div>
+                  <div *ngIf="(user|async) && (admin|async)" class="mbr-section-btn">
+                    <a (click)="deleteProduit(produit)" class="btn btn-primary display-4">Delete Product</a>
+                  </div>
                 </div>
                 <div></div>
               </div>

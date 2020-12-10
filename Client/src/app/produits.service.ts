@@ -47,4 +47,8 @@ export class ProduitsService {
     const url = this.urlBase + 'produit/research';
     return this.http.post(url, research, httpOptions);
   }
+
+  deleteItem(item): Observable<any> {
+    return this.http.post(this.urlBase + 'produits/delete', item, httpOptions);
+  }
 }

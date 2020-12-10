@@ -29,6 +29,7 @@ export class ProduitsComponent implements OnInit {
       if (params.MinPrix === null) params.MinPrix = "null";
       if (params.MaxPrix === null) params.MaxPrix = "null";
       this.produitsService.getProduitFromResearch(params).subscribe(res => {
+        console.log(res);
         this.produits = res;
       });
     });
@@ -39,6 +40,14 @@ export class ProduitsComponent implements OnInit {
 
   addToBasket(produit, quantite) {
     this.router.navigate(["/panier/achat/" + produit.nom + "/" + produit.prix + "/" + produit.marque + "/" + quantite + "/" + this.authService.getEmail()])
+  }
+
+  deleteProduit(produit) {
+    this.produitsService.deleteItem(produit).subscribe((res) => {
+      if (res['resultat']) {
+        console.log(res['message']);
+      }
+    });
   }
 
 }
